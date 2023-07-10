@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:family_tree/utils/dimensions.dart';
+import 'package:clean_architecture_template/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,4 @@
-import 'package:family_tree/config/app_theme.dart';
+import 'package:clean_architecture_template/config/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppDivider extends StatelessWidget {

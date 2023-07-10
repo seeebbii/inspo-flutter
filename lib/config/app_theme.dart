@@ -1,4 +1,4 @@
-import 'package:family_tree/utils/dimensions.dart';
+import 'package:clean_architecture_template/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

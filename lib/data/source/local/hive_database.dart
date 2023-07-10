@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:family_tree/utils/logger.dart';
+import 'package:clean_architecture_template/utils/logger.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveDatabase{

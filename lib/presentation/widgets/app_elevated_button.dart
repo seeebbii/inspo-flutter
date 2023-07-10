@@ -1,6 +1,6 @@
-import 'package:family_tree/config/app_theme.dart';
-import 'package:family_tree/utils/dimensions.dart';
-import 'package:family_tree/utils/extensions/context.extension.dart';
+import 'package:clean_architecture_template/config/app_theme.dart';
+import 'package:clean_architecture_template/utils/dimensions.dart';
+import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';

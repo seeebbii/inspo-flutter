@@ -1,24 +1,11 @@
-import 'package:family_tree/config/router/custom_navigator_observer.dart';
-import 'package:family_tree/presentation/ui/authentication/login.screen.dart';
-import 'package:family_tree/presentation/ui/authentication/otp_verification.screen.dart';
-import 'package:family_tree/presentation/ui/authentication/signup.screen.dart';
-import 'package:family_tree/presentation/ui/authentication/verify_phone.screen.dart';
-import 'package:family_tree/presentation/ui/home/home.dart';
-import 'package:family_tree/presentation/ui/onboarding/onboarding.screen.dart';
-import 'package:family_tree/presentation/ui/profile_setup/setup_info.screen.dart';
-import 'package:family_tree/presentation/ui/splash/splash.screen.dart';
+import 'package:clean_architecture_template/config/router/custom_navigator_observer.dart';
+import 'package:clean_architecture_template/presentation/ui/splash/splash.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path/path.dart';
 
-import '../../presentation/ui/profile_setup/create_profile.screen.dart';
-import '../../presentation/ui/profile_setup/invitation.screen.dart';
-import '../../presentation/ui/profile_setup/life_story.screen.dart';
-import '../../presentation/ui/profile_setup/referral_source.screen.dart';
-import '../../presentation/ui/profile_setup/setup_photo.screen.dart';
-import '../../presentation/ui/profile_setup/setup_video.screen.dart';
 
 class AppRouter {
   // WELCOME ROUTE
@@ -54,19 +41,6 @@ class AppRouter {
     initialLocation: splashScreen,
     routes: <RouteBase>[
       _buildRoute(splashScreen, const SplashScreen()),
-      _buildRoute(onBoardingScreen, const OnBoardingScreen()),
-      _buildRoute(loginScreen, const LoginScreen()),
-      _buildRoute(signupScreen, const SignupScreen()),
-      _buildRoute(verifyPhoneScreen, const VerifyPhone()),
-      _buildRoute(otpVerificationScreen, const OtpVerificationScreen()),
-      _buildRoute(createProfileScreen, const CreateProfileScreen()),
-      _buildRoute(setupInfoScreen, const SetupInfoScreen()),
-      _buildRoute(setupPhotoScreen, const SetupPhotoScreen()),
-      _buildRoute(setupVideoScreen, const SetupVideoScreen()),
-      _buildRoute(lifeStoryScreen, const LifeStoryScreen()),
-      _buildRoute(invitationScreen, const InvitationScreen()),
-      _buildRoute(referralSourceScreen, const ReferralSourceScreen()),
-      _buildRoute(homeScreen, const HomeScreen()),
     ],
   );
 

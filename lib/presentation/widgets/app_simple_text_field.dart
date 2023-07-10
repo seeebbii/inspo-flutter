@@ -1,7 +1,7 @@
-import 'package:family_tree/config/app_theme.dart';
-import 'package:family_tree/presentation/view_models/authentication_VM.dart';
-import 'package:family_tree/utils/dimensions.dart';
-import 'package:family_tree/utils/extensions/context.extension.dart';
+import 'package:clean_architecture_template/config/app_theme.dart';
+import 'package:clean_architecture_template/presentation/view_models/authentication_VM.dart';
+import 'package:clean_architecture_template/utils/dimensions.dart';
+import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

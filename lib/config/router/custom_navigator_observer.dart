@@ -1,4 +1,4 @@
-import 'package:family_tree/utils/logger.dart';
+import 'package:clean_architecture_template/utils/logger.dart';
 import 'package:flutter/material.dart';
 
 class CustomNavigatorObserver extends NavigatorObserver {
