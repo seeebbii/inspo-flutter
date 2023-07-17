@@ -1,4 +1,9 @@
 import 'package:clean_architecture_template/config/router/custom_navigator_observer.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/application_under_eview_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/forgot_password_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/login_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/sign_up_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/splash/splash.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +27,7 @@ class AppRouter {
   static const String resetPasswordScreen = '/reset-password-screen';
   static const String changePassword = '/change-password-screen';
   static const String signupScreen = '/signup-screen';
+  static const String applicationUnderReviewScreen = '/application-under-review-screen';
 
   // PROFILE SETUP ROUTE
   static const String createProfileScreen = '/create-profile-screen';
@@ -38,9 +44,15 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     observers: [CustomNavigatorObserver()],
     navigatorKey: Get.key,
-    initialLocation: splashScreen,
+    initialLocation: loginScreen,
     routes: <RouteBase>[
-      _buildRoute(splashScreen, const SplashScreen()),
+      _buildRoute(splashScreen, SplashScreen()),
+      _buildRoute(loginScreen, LoginScreen()),
+      _buildRoute(forgotPasswordScreen, ForgotPasswordScreen()),
+      _buildRoute(signupScreen, SignUpScreen()),
+      _buildRoute(otpVerificationScreen, OtpScreen()),
+      _buildRoute(otpVerificationScreen, OtpScreen()),
+      _buildRoute(applicationUnderReviewScreen, ApplicationUnderReviewScreen()),
     ],
   );
 
