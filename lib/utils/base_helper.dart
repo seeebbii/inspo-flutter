@@ -1,11 +1,18 @@
-import 'dart:core';
+import 'dart:html';
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_architecture_template/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../presentation/notifiers/imageProviderModel.notifier.dart';
 
 class BaseHelper {
   static void showSnackBar(String message) {

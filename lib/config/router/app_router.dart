@@ -5,6 +5,7 @@ import 'package:clean_architecture_template/presentation/ui/authentication/login
 import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/sign_up_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/splash/splash.screen.dart';
+import 'package:clean_architecture_template/presentation/ui/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -40,6 +41,7 @@ class AppRouter {
 
   // HOME ROUTE
   static const String homeScreen = '/home-screen';
+  static const String welcomeScreen = '/welcome-screen';
 
   static final GoRouter router = GoRouter(
     observers: [CustomNavigatorObserver()],
@@ -53,6 +55,7 @@ class AppRouter {
       _buildRoute(otpVerificationScreen, OtpScreen()),
       _buildRoute(otpVerificationScreen, OtpScreen()),
       _buildRoute(applicationUnderReviewScreen, ApplicationUnderReviewScreen()),
+      _buildRoute(welcomeScreen, WelcomeScreen()),
     ],
   );
 

@@ -5,8 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../config/router/app_router.dart';
+import '../../notifiers/bottomNavBar.notifier.dart';
 import '../../view_models/authentication_VM.dart';
 import '../../widgets/app_simple_text_field.dart';
+import '../../widgets/inspo_bottom_nav.dart';
 import '../../widgets/inspo_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -15,6 +17,13 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Consumer<BottomNavBarProvider>(
+        builder: (context,model,builder){
+          return InspoBottomNavBar(
+
+          );
+        },
+      ),
       body: ListView(
         children: [
           Column(

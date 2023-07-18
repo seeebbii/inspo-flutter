@@ -1,5 +1,6 @@
 import 'package:clean_architecture_template/config/locator.dart';
 import 'package:clean_architecture_template/presentation/notifiers/authentication.notifier.dart';
+import 'package:clean_architecture_template/presentation/notifiers/bottomNavBar.notifier.dart';
 import 'package:clean_architecture_template/presentation/notifiers/connection.notifier.dart';
 import 'package:clean_architecture_template/presentation/view_models/authentication_VM.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,9 @@ class MultiProviders extends StatelessWidget {
         ),
         ChangeNotifierProvider<AuthenticationScreenVM>(
           create: (BuildContext context) => AuthenticationScreenVM(),
+        ),
+        ChangeNotifierProvider<BottomNavBarProvider>(
+          create: (BuildContext context) => BottomNavBarProvider(),
         ),
       ],
       child: child,

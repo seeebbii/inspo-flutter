@@ -1,10 +1,12 @@
 
 import 'package:clean_architecture_template/config/router/app_router.dart';
 import 'package:clean_architecture_template/presentation/notifiers/authentication.notifier.dart';
+import 'package:clean_architecture_template/presentation/notifiers/bottomNavBar.notifier.dart';
 import 'package:clean_architecture_template/presentation/view_models/authentication_VM.dart';
 import 'package:clean_architecture_template/presentation/widgets/app_elevated_button.dart';
 import 'package:clean_architecture_template/presentation/widgets/app_simple_text_field.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_app_bar.dart';
+import 'package:clean_architecture_template/presentation/widgets/inspo_bottom_nav.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Consumer<BottomNavBarProvider>(
+        builder: (context,model,builder){
+          return InspoBottomNavBar(
+
+          );
+        },
+      ),
       body: ListView(
         children: [
           Column(
@@ -80,6 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           textColor: Colors.white,
+                          onPressed: (){
+
+                          },
                         ),
                         InspoButton(
                           text: "CONCEPT",
@@ -192,6 +204,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontWeight: FontWeight.w800,
                 textColor: Colors.white,
                 borderWidth: 1,
+                onPressed: (){
+                  GoRouter.of(context).go(AppRouter.welcomeScreen);
+                },
               ),
               Center(
                 child: Container(
