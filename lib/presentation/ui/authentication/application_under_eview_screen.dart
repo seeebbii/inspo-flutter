@@ -1,7 +1,8 @@
+import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/material.dart';
 
+import '../../../utils/dimensions.dart';
 import '../../widgets/inspo_app_bar.dart';
-import '../../widgets/inspo_button.dart';
 
 class ApplicationUnderReviewScreen extends StatelessWidget {
   const ApplicationUnderReviewScreen({Key? key}) : super(key: key);
@@ -9,43 +10,39 @@ class ApplicationUnderReviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const InspoAppBar(),
       body: ListView(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InspoAppBar(),
               Center(
                 child: Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 31),
-                      child: Text(
-                        "THANK YOU!!!",
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w900
-                        ),
+                    SizedBox(height: context.height * 0.05),
+                    Text(
+                      "THANK YOU!!!",
+                      style: Dimensions.customTextStyle(
+                        32,
+                        FontWeight.w700,
+                        Colors.black,
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 250),
-                      child: Text(
-                        "YOUR APPLICATION IS BEING REVIEWED",
-                        style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700
-                        ),
+                    SizedBox(height: context.height * 0.25),
+                    Text(
+                      "YOUR APPLICATION IS BEING REVIEWED",
+                      style: Dimensions.customTextStyle(
+                        13,
+                        FontWeight.w700,
+                        Colors.black,
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 2),
-                      child: Text(
-                        "PLEASE CHECK BACK IN 1 HOUR",
-                        style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500
-                        ),
+                    Text(
+                      "PLEASE CHECK BACK IN 1 HOUR",
+                      style: Dimensions.customTextStyle(
+                        13,
+                        FontWeight.w500,
+                        Colors.black,
                       ),
                     ),
                   ],

@@ -1,3 +1,4 @@
+import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +6,9 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 
+import '../../../config/app_theme.dart';
 import '../../../config/router/app_router.dart';
+import '../../../utils/dimensions.dart';
 import '../../widgets/inspo_app_bar.dart';
 import '../../widgets/inspo_button.dart';
 
@@ -20,37 +23,38 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const InspoAppBar(),
       body: ListView(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InspoAppBar(),
               Center(
                 child: Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 130),
-                      child: Text(
-                        "CODE IS SENT ON YOUR EMAIL",
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w900
-                        ),
+                    SizedBox(height: context.height * 0.2),
+                    Text(
+                      "CODE IS SENT ON YOUR EMAIL",
+                      style: Dimensions.customTextStyle(
+                        24,
+                        FontWeight.w700,
+                        Colors.black,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 80),
                       child: Text(
-                        "Code",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400
+                        "CODE",
+                        style: Dimensions.customTextStyle(
+                          14,
+                          FontWeight.w400,
+                          AppTheme.blackColor,
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 9),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: Dimensions.tinyVerticalSpaces),
                       child: OTPTextField(
                         length: 5,
                         width: MediaQuery.of(context).size.width,
@@ -58,11 +62,14 @@ class _OtpScreenState extends State<OtpScreen> {
                         otpFieldStyle: OtpFieldStyle(
                           borderColor: Colors.black,
                         ),
-                        style: TextStyle(
-                            fontSize: 17
+                        style: Dimensions.customTextStyle(
+                          20,
+                          FontWeight.w700,
+                          AppTheme.blackColor,
                         ),
                         outlineBorderRadius: 9,
-                        textFieldAlignment: MainAxisAlignment.spaceEvenly,
+                        textFieldAlignment: MainAxisAlignment.center,
+                        spaceBetween: 5,
                         fieldStyle: FieldStyle.box,
                         onCompleted: (pin) {
                           print("Completed: " + pin);
@@ -74,22 +81,20 @@ class _OtpScreenState extends State<OtpScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                            child: Text(
-                              "RESEND CODE?",
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600
-                              ),
+                          Text(
+                            "RESEND CODE?",
+                            style: Dimensions.customTextStyle(
+                              13,
+                              FontWeight.w600,
+                              AppTheme.blackColor,
                             ),
                           ),
-                          Container(
-                            child: Text(
-                              "CHECK YOUR EMAIL",
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600
-                              ),
+                          Text(
+                            "CHECK YOUR EMAIL",
+                            style: Dimensions.customTextStyle(
+                              13,
+                              FontWeight.w600,
+                              AppTheme.blackColor,
                             ),
                           ),
                         ],
@@ -99,15 +104,15 @@ class _OtpScreenState extends State<OtpScreen> {
                       text: "Submit",
                       width: 183,
                       height: 45,
-                      marginTop: 24,
-                      buttonColor: Colors.black,
+                      marginTop: 25,
+                      buttonColor: AppTheme.blackColor,
                       buttonRadius: 8,
                       fontSize: 14,
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w600,
                       textColor: Colors.white,
                       borderWidth: 1,
-                      onPressed: (){
-                        GoRouter.of(context).go(AppRouter.applicationUnderReviewScreen);
+                      onPressed: () {
+                        context.push(AppRouter.applicationUnderReviewScreen);
                       },
                     ),
                   ],

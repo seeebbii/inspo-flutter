@@ -14,7 +14,8 @@ class AuthenticationScreenVM extends ChangeNotifier {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
@@ -23,7 +24,11 @@ class AuthenticationScreenVM extends ChangeNotifier {
   final TextEditingController _tiktokController = TextEditingController();
   final TextEditingController _twitterController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _preferredTimingController = TextEditingController();
+  final TextEditingController _preferredTimingController =
+      TextEditingController();
+
+  int userType = 0; // influencer = 0, concept = 1
+  bool agreeToTerms = false;
 
   // Phone Number Without Country Code
   String phoneNumberWithoutCountryCode = '';
@@ -47,7 +52,8 @@ class AuthenticationScreenVM extends ChangeNotifier {
   TextEditingController get usernameController => _usernameController;
   TextEditingController get phoneController => _phoneController;
   TextEditingController get passwordController => _passwordController;
-  TextEditingController get confirmPasswordController => _confirmPasswordController;
+  TextEditingController get confirmPasswordController =>
+      _confirmPasswordController;
   TextEditingController get rePasswordController => _rePasswordController;
   TextEditingController get dobController => _dobController;
   TextEditingController get bioController => _bioController;
@@ -55,7 +61,8 @@ class AuthenticationScreenVM extends ChangeNotifier {
   TextEditingController get instagramController => _instagramController;
   TextEditingController get tiktokController => _tiktokController;
   TextEditingController get twitterController => _twitterController;
-  TextEditingController get preferredTimingController => _preferredTimingController;
+  TextEditingController get preferredTimingController =>
+      _preferredTimingController;
   TextEditingController get addressController => _addressController;
 
   bool get isPassVisible => _isPassVisible;
@@ -76,6 +83,16 @@ class AuthenticationScreenVM extends ChangeNotifier {
   bool emailAvailable = true;
 
   String countryCodeStr = 'IQ';
+
+  void setAgreeToTerms(bool val) {
+    agreeToTerms = val;
+    notifyListeners();
+  }
+
+  void setUserType(int type) {
+    userType = type;
+    notifyListeners();
+  }
 
   void setCountryCodeStr(String str) {
     countryCodeStr = str;

@@ -72,7 +72,7 @@ class AppTheme {
   static const Color graphColorOrange = Color(0xFFFF9900);
 
   static const Color whiteColor = Colors.white;
-  static const Color blackColor = Color(0xFF1F1F1F);
+  static const Color blackColor = Color(0xFF201F21);
   static const Color fieldOutlineColor = Color(0xFF808080);
   static const Color searchHintColor = Color(0xFF888888);
   static const Color textFieldFillColor = Color(0xFFFAFAFA);
@@ -225,7 +225,7 @@ class AppTheme {
       textTheme: const TextTheme(
         displayLarge: TextStyle(
           fontSize: Dimensions.h1,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w700,
           color: blackColor,
         ),
         displayMedium: TextStyle(
@@ -262,7 +262,7 @@ class AppTheme {
       highlightColor: splashColor,
       focusColor: primaryColor,
       iconTheme: const IconThemeData(color: Colors.black),
-      fontFamily: 'Aeonik',
+      fontFamily: 'Helvetica',
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: bottomNavBarBackground, elevation: 3),
       inputDecorationTheme: const InputDecorationTheme(

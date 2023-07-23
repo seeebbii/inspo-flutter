@@ -1,4 +1,17 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 class Dimensions {
+  static customTextStyle(double fontSize, FontWeight fontWeight, Color color) {
+    return GoogleFonts.poppins(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+    );
+  }
+
   // spaces
   static const double screenSpaces = 16.0;
   static const double screenHorizontalSpaces = 16.0;
@@ -25,9 +38,9 @@ class Dimensions {
   static const double borderRadius = 40.0;
 
   // fonts ** headlines bold and body light **
-  static const double h1 = 38.0;
+  static const double h1 = 24.0;
   static const double h2 = 32.0;
-  static const double h3 = 24.0;
+  static const double h3 = 16.0;
   static const double p1 = 18.0;
   static const double p2 = 16.0;
   static const double p3 = 10.0;
@@ -132,8 +145,9 @@ class Dimensions {
   static const double navigationBarIconHeight = 24.0;
   static const double navigationBarFontSize = 12.0;
   static const double navigationBarLabelSpacing = 5.0;
+}
 
-  /*
+/*
   static const double minButtonHeight = 48.0 / 1.5;
   static const double toggleButtonHeight = 48.0 / 1.3;
   static const double toggleButtonRadius = 5.0;
@@ -171,4 +185,3 @@ class Dimensions {
   static const double specialInputFieldPadding = 10.0;
   static const double specialInputFieldBorderWidth = 2.0;
   */
-}
