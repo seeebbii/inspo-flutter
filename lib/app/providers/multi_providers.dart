@@ -3,6 +3,7 @@ import 'package:clean_architecture_template/presentation/notifiers/authenticatio
 import 'package:clean_architecture_template/presentation/notifiers/bottomNavBar.notifier.dart';
 import 'package:clean_architecture_template/presentation/notifiers/connection.notifier.dart';
 import 'package:clean_architecture_template/presentation/view_models/authentication_VM.dart';
+import 'package:clean_architecture_template/presentation/view_models/edit_profile_VM.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,9 @@ class MultiProviders extends StatelessWidget {
         ),
         ChangeNotifierProvider<BottomNavBarProvider>(
           create: (BuildContext context) => BottomNavBarProvider(),
+        ),
+        ChangeNotifierProvider<EditProfileScreenVM>(
+          create: (BuildContext context) => EditProfileScreenVM(),
         ),
       ],
       child: child,

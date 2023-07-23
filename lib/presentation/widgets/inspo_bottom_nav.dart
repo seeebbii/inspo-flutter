@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../config/router/app_router.dart';
 import '../notifiers/bottomNavBar.notifier.dart';
 
 class InspoBottomNavBar extends StatelessWidget {
@@ -15,10 +17,10 @@ class InspoBottomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(Icons.ac_unit, selectedIndex == 0, () {
+          _buildNavItem(Icons.home, selectedIndex == 0, () {
             provider.selectIndex(0);
           }),
-          _buildNavItem(Icons.home, selectedIndex == 1, () {
+          _buildNavItem(Icons.calendar_month, selectedIndex == 1, () {
             provider.selectIndex(1);
           }),
           _buildNavItem(Icons.settings, selectedIndex == 2, () {

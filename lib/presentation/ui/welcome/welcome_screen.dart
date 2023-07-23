@@ -1,7 +1,9 @@
 import 'package:clean_architecture_template/presentation/widgets/inspo_app_bar.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import '../../../config/router/app_router.dart';
 import '../../notifiers/bottomNavBar.notifier.dart';
 import '../../widgets/inspo_bottom_nav.dart';
 
@@ -19,7 +21,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       bottomNavigationBar: Consumer<BottomNavBarProvider>(
         builder: (context,model,builder){
           return InspoBottomNavBar(
-
           );
         },
       ),
@@ -105,7 +106,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           textColor: Colors.black,
                           borderWidth: 1,
                           onPressed: (){
-
+                            GoRouter.of(context).go(AppRouter.homeMainScreen);
                           },
                         ),
                         Container(

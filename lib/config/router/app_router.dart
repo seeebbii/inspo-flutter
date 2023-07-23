@@ -4,6 +4,12 @@ import 'package:clean_architecture_template/presentation/ui/authentication/forgo
 import 'package:clean_architecture_template/presentation/ui/authentication/login_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/sign_up_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/InspoNeedHelpScreen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/IspoHomeMainScreen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/edit_profile_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/inspo_home_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/inspo_notification_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/inspo_past_converage_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/splash/splash.screen.dart';
 import 'package:clean_architecture_template/presentation/ui/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +17,8 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path/path.dart';
+
+import '../../presentation/ui/home/inspo_settings_screen.dart';
 
 
 class AppRouter {
@@ -41,7 +49,13 @@ class AppRouter {
 
   // HOME ROUTE
   static const String homeScreen = '/home-screen';
+  static const String homeMainScreen = '/home-main-screen';
   static const String welcomeScreen = '/welcome-screen';
+  static const String notificationScreen = '/notification-screen';
+  static const String settingsScreen = '/settings-screen';
+  static const String editProfileScreen = '/edit-profile-screen';
+  static const String needHelpScreen = '/need-help-screen';
+  static const String pastCoverageScreen = '/past-coverage-screen';
 
   static final GoRouter router = GoRouter(
     observers: [CustomNavigatorObserver()],
@@ -56,6 +70,13 @@ class AppRouter {
       _buildRoute(otpVerificationScreen, OtpScreen()),
       _buildRoute(applicationUnderReviewScreen, ApplicationUnderReviewScreen()),
       _buildRoute(welcomeScreen, WelcomeScreen()),
+      _buildRoute(homeScreen, InspoHomeScreen()),
+      _buildRoute(notificationScreen, InspoNotificationScreen()),
+      _buildRoute(settingsScreen, InspoSettingsScreen()),
+      _buildRoute(homeMainScreen, InspoHomeMainScreen()),
+      _buildRoute(editProfileScreen, InspoEditProfileScreen()),
+      _buildRoute(needHelpScreen, InspoNeedHelpScreen()),
+      _buildRoute(pastCoverageScreen, InspoPastCoverageScreen()),
     ],
   );
 

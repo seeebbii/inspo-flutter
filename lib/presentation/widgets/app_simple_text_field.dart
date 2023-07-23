@@ -38,6 +38,7 @@ class AppSimpleTextField extends StatelessWidget {
   double width;
   double height;
   Widget? icon;
+  final bool hasBorders;
 
 
   AppSimpleTextField(
@@ -71,6 +72,7 @@ class AppSimpleTextField extends StatelessWidget {
       this.width = 0,
       this.height = 0,
       this.icon,
+      this.hasBorders = true,
       this.validationMsg = 'required_field_tr'})
       : super(key: key);
 
@@ -90,7 +92,7 @@ class AppSimpleTextField extends StatelessWidget {
       height: height,
       margin: EdgeInsets.only(top: marginTop,bottom: marginBottom,left: marginLeft,right: marginRight),
       decoration: BoxDecoration(
-        border: Border.all(width: borderWidth),
+        border: hasBorders ? Border.all(width: borderWidth) : Border.fromBorderSide(BorderSide.none),
         borderRadius: BorderRadius.circular(borderRadius)
       ),
       child: TextFormField(
@@ -146,8 +148,8 @@ class AppSimpleTextField extends StatelessWidget {
                 vertical: Dimensions.screenVerticalSpaces,
                 horizontal: Dimensions.screenHorizontalSpaces),
             fillColor: AppTheme.textFieldFillColor,
-            border: InputBorder.none,
-            filled: true,
+            border: UnderlineInputBorder(),
+            filled: false,
             hintText: hintText,
             hintStyle: TextStyle(
               color: Colors.black
