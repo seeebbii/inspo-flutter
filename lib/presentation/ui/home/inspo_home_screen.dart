@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/inspo_app_bar.dart';
 import '../../widgets/inspo_home_food_item.dart';
+import 'dialog/inspo_confirmation_dialog.dart';
 
 class InspoHomeScreen extends StatefulWidget {
   const InspoHomeScreen({Key? key}) : super(key: key);
@@ -21,7 +22,15 @@ class _InspoHomeScreenState extends State<InspoHomeScreen> {
             child: ListView.builder(
               itemCount: 15,
               itemBuilder: (context, index) {
-                return InspoHomeFoodItem();
+                return InspoHomeFoodItem(onTap: (){
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return InspoConfirmationDialog(); // Your custom dialog widget
+                    },
+                  );
+                },
+                );
               },
             ),
           ),

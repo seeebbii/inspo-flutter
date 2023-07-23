@@ -6,7 +6,7 @@ class InspoReviewCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(left: 2),
           width: 10,
           height: 10,
           decoration: BoxDecoration(
