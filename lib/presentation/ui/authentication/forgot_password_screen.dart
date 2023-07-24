@@ -86,7 +86,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   textColor: Colors.white,
                   borderWidth: 1,
                   onPressed: () {
-                    context.go(AppRouter.otpVerificationScreen);
+                    context.push(AppRouter.otpVerificationScreen);
                   },
                 ),
                 const SizedBox(height: 25),

@@ -9,19 +9,17 @@ import 'package:provider/provider.dart';
 import '../../widgets/inspo_app_bar.dart';
 
 class InspoHomeMainScreen extends StatelessWidget {
+  const InspoHomeMainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final bottomNavBarProvider = Provider.of<BottomNavBarProvider>(context);
     int currentIndex = bottomNavBarProvider.selectedIndex;
 
     return Scaffold(
-      body: Column(
-        children: [
-          InspoAppBar(),
-          Expanded(child: _buildScreen(currentIndex)),
-        ],
-      ),
-      bottomNavigationBar: InspoBottomNavBar(),
+      appBar: const InspoAppBar(),
+      body: _buildScreen(currentIndex),
+      bottomNavigationBar: const InspoBottomNavBar(),
     );
   }
 }
@@ -29,12 +27,12 @@ class InspoHomeMainScreen extends StatelessWidget {
 Widget _buildScreen(int currentIndex) {
   switch (currentIndex) {
     case 0:
-      return InspoHomeScreen();
+      return const InspoHomeScreen();
     case 1:
-      return InspoNotificationScreen();
+      return const InspoNotificationScreen();
     case 2:
-      return InspoSettingsScreen();
+      return const InspoSettingsScreen();
     default:
-      return InspoHomeScreen();
+      return const InspoHomeScreen();
   }
 }

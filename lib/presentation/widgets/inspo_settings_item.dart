@@ -1,26 +1,29 @@
+import 'package:clean_architecture_template/presentation/widgets/inspo_custom_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/dimensions.dart';
 
 class InspoSettingsItem extends StatefulWidget {
   bool switchVisible = false;
   bool switchValue = false;
   String name = "";
   VoidCallback? onTap;
-  InspoSettingsItem({this.switchVisible = false,this.name = "",this.onTap});
+  InspoSettingsItem(
+      {super.key, this.switchVisible = false, this.name = "", this.onTap});
 
   @override
   State<InspoSettingsItem> createState() => _InspoSettingsItemState();
 }
 
 class _InspoSettingsItemState extends State<InspoSettingsItem> {
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
         onTap: widget.onTap,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 15,vertical: 4),
+          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
           height: 45,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),
@@ -30,25 +33,25 @@ class _InspoSettingsItemState extends State<InspoSettingsItem> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   widget.name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  style: Dimensions.customTextStyle(
+                    16,
+                    FontWeight.w700,
+                    Colors.black,
+                  ),
                 ),
               ),
               Visibility(
                 visible: widget.switchVisible,
-                child: Transform.scale(
-                  scale: 0.7,
-                  child: CupertinoSwitch(
-                    value: widget.switchValue,
-                    activeColor: Colors.black,
-                    onChanged: (newValue) {
-                      setState(() {
-                        widget.switchValue = newValue;
-                      });
-                    },
-                  ),
+                child: InspoSwitch(
+                  switchValue: widget.switchValue,
+                  onTap: (value) {
+                    setState(() {
+                      widget.switchValue = value;
+                    });
+                  },
                 ),
               ),
             ],

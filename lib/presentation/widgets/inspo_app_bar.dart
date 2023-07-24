@@ -11,6 +11,8 @@ class InspoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(2.5),
         child: Container(

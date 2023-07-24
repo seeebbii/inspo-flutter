@@ -6,16 +6,16 @@ class InspoReviewCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-          margin: EdgeInsets.only(left: 2),
-          width: 10,
-          height: 10,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.black,
-              width: 3,
-            ),
-          ),
-        );
+      margin: const EdgeInsets.only(left: 2),
+      width: 10,
+      height: 10,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: Colors.black,
+          width: 3,
+        ),
+      ),
+    );
   }
 }

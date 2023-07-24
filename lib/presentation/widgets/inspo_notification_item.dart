@@ -1,32 +1,39 @@
+import 'dart:math';
+
 import 'package:clean_architecture_template/presentation/widgets/inspo_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../config/app_theme.dart';
+import '../../utils/dimensions.dart';
 
 class InspoNotificationItem extends StatelessWidget {
   const InspoNotificationItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final random = Random();
+    final randomNumber = random.nextInt(2);
     return Expanded(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.only(top: 8,left: 20,right: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
           border: Border.all(width: 2),
-          borderRadius: BorderRadius.circular(4)
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
           children: [
             Row(
               children: [
-                Container(
-                    margin: EdgeInsets.only(top: 19,left: 15),
+                SizedBox(
                     width: 28,
                     height: 28,
-                    child: Image.asset("assets/images/avtar.png")
-                ),
+                    child: Image.asset("assets/images/avtar.png")),
                 Container(
-                  margin: EdgeInsets.only(left: 10,top: 10),
+                  margin: const EdgeInsets.only(
+                    left: 10,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -34,32 +41,31 @@ class InspoNotificationItem extends StatelessWidget {
                         children: [
                           Text(
                             "GOOD CUP",
-                            style: TextStyle(
-                                fontSize: 21,
-                                fontWeight: FontWeight.w600
+                            style: Dimensions.customTextStyle(
+                              21,
+                              FontWeight.w600,
+                              Colors.black,
                             ),
                           ),
-                          Container(
-                              margin: EdgeInsets.only(left: 7),
-                              child: Image.asset("assets/images/ic_arrow_right.png")
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 7),
-                            child: Text(
-                              "Requirements",
-                              style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600
-                              ),
+                          const SizedBox(width: 5),
+                          const Icon(Icons.arrow_forward_ios, size: 15),
+                          const SizedBox(width: 5),
+                          Text(
+                            "Requirements",
+                            style: Dimensions.customTextStyle(
+                              11,
+                              FontWeight.w600,
+                              Colors.black,
                             ),
-                          ),
+                          )
                         ],
                       ),
                       Text(
                         "10hr",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400
+                        style: Dimensions.customTextStyle(
+                          12,
+                          FontWeight.w400,
+                          AppTheme.blackColor,
                         ),
                       ),
                     ],
@@ -67,56 +73,46 @@ class InspoNotificationItem extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              margin: EdgeInsets.only(left: 15,right: 15,top: 10),
-              child: Text(
-                "GOODCUP HAS ACCEPTED YOUR REQUEST SEE YOU @ 6:00 ",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400
-                ),
-              ),
+            const SizedBox(height: 20),
+            const Text(
+              "GOODCUP HAS ACCEPTED YOUR REQUEST SEE YOU @ 6:00 ",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: InspoButton(
-                    text: "COVERED",
-                    height: 63,
-                    marginTop: 16,
-                    marginLeft: 11,
-                    marginRight: 4,
-                    marginBottom: 24,
-                    buttonColor: Colors.black,
-                    buttonRadius: 9,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    textColor: Colors.white,
-                    borderWidth: 2,
-                    onPressed: (){
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: InspoButton(
-                    text: "NOPE",
-                    height: 63,
-                    marginTop: 16,
-                    marginLeft: 11,
-                    marginRight: 12,
-                    marginBottom: 24,
-                    buttonColor: Colors.white,
-                    buttonRadius: 9,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    textColor: Colors.black,
-                    borderWidth: 2,
-                    onPressed: (){
-                    },
-                  ),
-                ),
-              ],
-            )
+            const SizedBox(height: 15),
+            randomNumber > 0.5
+                ? Row(
+                    children: [
+                      Expanded(
+                        child: InspoButton(
+                          text: "COVERED",
+                          height: 63,
+                          buttonColor: Colors.black,
+                          buttonRadius: 9,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          textColor: Colors.white,
+                          borderWidth: 2,
+                          onPressed: () {},
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: InspoButton(
+                          text: "NOPE",
+                          height: 63,
+                          marginRight: 12,
+                          buttonColor: Colors.white,
+                          buttonRadius: 9,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          textColor: Colors.black,
+                          borderWidth: 2,
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  )
+                : const SizedBox.shrink()
           ],
         ),
       ),

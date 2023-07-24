@@ -6,67 +6,76 @@ class InspoNotificationScreen extends StatefulWidget {
   const InspoNotificationScreen({Key? key}) : super(key: key);
 
   @override
-  State<InspoNotificationScreen> createState() => _InspoNotificationScreenState();
+  State<InspoNotificationScreen> createState() =>
+      _InspoNotificationScreenState();
 }
 
 class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
-
-  final List<String> _filteredList  = [
-    "APPROVED",
-    "DENIED",
-    "COVERED"
-  ];
+  final List<String> _filteredList = ["APPROVED", "DENIED", "COVERED"];
+  String _selectedFilter = "APPROVED";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 7,right: 14),
-            height: 30,
-            width: MediaQuery.of(context).size.width,
-            child: Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                        itemCount: _filteredList.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context,index){
-                          return InspoButton(
-                            width: 100,
-                            height: 30,
-                            marginLeft: 3,
-                            marginTop: 6,
-                            text: _filteredList[index],
-                            buttonRadius: 12,
-                            borderWidth: 2,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700,
-                            buttonColor: Colors.white,
-                            textColor: Colors.black,
-                          );
-                        }
+      body: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 25,
+              width: MediaQuery.of(context).size.width,
+              child: Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: _filteredList.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return InspoButton(
+                              width: 100,
+                              height: 30,
+                              marginLeft: 3,
+                              text: _filteredList[index],
+                              buttonRadius: 12,
+                              borderWidth: 2,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              buttonColor:
+                                  _selectedFilter == _filteredList[index]
+                                      ? Colors.black
+                                      : Colors.white,
+                              textColor: _selectedFilter == _filteredList[index]
+                                  ? Colors.white
+                                  : Colors.black,
+                              onPressed: () {
+                                setState(() {
+                                  _selectedFilter = _filteredList[index];
+                                });
+                              },
+                            );
+                          }),
                     ),
-                  ),
-                  Container(
-                    width: 16,
-                    height: 16,
-                    child: Image.asset("assets/images/ic_filter.png"),
-                  )
-                ],
+                    SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: Image.asset("assets/images/ic_filter.png"),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded( // Wrap ListView.builder with Expanded
-            child: ListView.builder(
-              itemCount: 15,
-              itemBuilder: (context, index) {
-                return InspoNotificationItem();
-              },
+            const SizedBox(height: 10),
+            Expanded(
+              // Wrap ListView.builder with Expanded
+              child: ListView.builder(
+                itemCount: 15,
+                itemBuilder: (context, index) {
+                  return const InspoNotificationItem();
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

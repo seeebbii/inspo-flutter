@@ -254,6 +254,7 @@ class AppTheme {
           color: blackColor,
         ),
       ),
+      useMaterial3: true,
       primaryColor: lightBackgroundColor,
       scaffoldBackgroundColor: lightBackgroundColor,
       primaryColorLight: const Color(0xFFF1F1F1),
@@ -287,7 +288,7 @@ class AppTheme {
           const TextSelectionThemeData(cursorColor: primaryColor),
       colorScheme: ColorScheme.fromSwatch()
           .copyWith(
-            secondary: const Color(0xFF79A6DC),
+            secondary: Colors.white,
             brightness: Brightness.light,
           )
           .copyWith(secondary: primaryColor)

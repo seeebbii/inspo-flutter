@@ -1,9 +1,11 @@
 import 'package:clean_architecture_template/presentation/widgets/inspo_button.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_settings_item.dart';
+import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../config/router/app_router.dart';
+import '../../../utils/dimensions.dart';
 
 class InspoSettingsScreen extends StatefulWidget {
   const InspoSettingsScreen({Key? key}) : super(key: key);
@@ -18,64 +20,87 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
     return ListView(
       children: [
         Expanded(
-          child: Center(
-            child: Column(
-              children: [
-                Container(
-                  height: 155,
-                  child: Image.asset("assets/images/profile_image.png"),
+          child: Column(
+            children: [
+              SizedBox(height: context.height * 0.05),
+              SizedBox(
+                height: 150,
+                child: Image.asset("assets/images/profile_image.png"),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "GOT INSPO",
+                style: Dimensions.customTextStyle(
+                  32,
+                  FontWeight.w700,
+                  Colors.black,
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 13),
-                  child: Text(
-                    "GOT INSPO",
-                    style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w600
-                    ),
-                  ),
+              ),
+              Text(
+                "Gotinspo@email.com".toUpperCase(),
+                style: Dimensions.customTextStyle(
+                  14,
+                  FontWeight.w600,
+                  Colors.black,
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 4),
-                  child: Text(
-                    "Gotinspo@email.com",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600
-                    ),
-                  ),
-                ),
-                InspoButton(
-                  width: 73,
-                  height: 25,
-                  borderWidth: 2,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                  textColor: Colors.black,
-                  buttonColor: Colors.white,
-                  marginTop: 12,
-                  text: "EDIT",
-                  buttonRadius: 15,
-                  onPressed: (){
-                    GoRouter.of(context).go(AppRouter.editProfileScreen);
-                  },
-                ),
-              ],
-            ),
+              ),
+              InspoButton(
+                width: 73,
+                height: 25,
+                borderWidth: 2,
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
+                textColor: Colors.black,
+                buttonColor: Colors.white,
+                marginTop: 12,
+                text: "EDIT",
+                buttonRadius: 15,
+                onPressed: () {
+                  GoRouter.of(context).go(AppRouter.editProfileScreen);
+                },
+              ),
+            ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(top: 37),
-            child: InspoSettingsItem(name: "DARK MODE",switchVisible: true)
+        const SizedBox(height: 30),
+        InspoSettingsItem(name: "DARK MODE", switchVisible: true),
+        InspoSettingsItem(
+          name: "NEED HELP?",
+          switchVisible: false,
+          onTap: () {
+            context.push(AppRouter.needHelpScreen);
+          },
         ),
-        InspoSettingsItem(name: "NEED HELP?",switchVisible: false,onTap: (){
-          GoRouter.of(context).go(AppRouter.needHelpScreen);
-        },),
-        InspoSettingsItem(name: "PAST COVERAGE",switchVisible: false,onTap: (){
-          GoRouter.of(context).go(AppRouter.pastCoverageScreen);
-        },),
-        InspoSettingsItem(name: "NOTIFICATIONS",switchVisible: true),
-        InspoSettingsItem(name: "TUTORIAL",switchVisible: false)
+        InspoSettingsItem(
+          name: "PAST COVERAGE",
+          switchVisible: false,
+          onTap: () {
+            context.push(AppRouter.pastCoverageScreen);
+          },
+        ),
+        InspoSettingsItem(name: "NOTIFICATIONS", switchVisible: true),
+        InspoSettingsItem(name: "TUTORIAL", switchVisible: false),
+        const SizedBox(height: 20),
+        Column(
+          children: [
+            InspoButton(
+              width: 85,
+              height: 35,
+              borderWidth: 2,
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+              textColor: Colors.black,
+              buttonColor: Colors.white,
+              marginTop: 12,
+              text: "LOG OUT",
+              buttonRadius: 9,
+              onPressed: () {
+                context.go(AppRouter.loginScreen);
+              },
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
       ],
     );
   }
