@@ -4,12 +4,12 @@ import 'package:clean_architecture_template/presentation/ui/authentication/forgo
 import 'package:clean_architecture_template/presentation/ui/authentication/login_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/sign_up_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/InspoNeedHelpScreen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/IspoHomeMainScreen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/edit_profile_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/InspoNeedHelpScreen.dart';
+import 'package:clean_architecture_template/presentation/ui/welcome/IspoHomeMainScreen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/edit_profile_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/inspo_home_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/inspo_notification_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/inspo_past_converage_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/event/inspo_notification_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/inspo_past_converage_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/splash/splash.screen.dart';
 import 'package:clean_architecture_template/presentation/ui/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +18,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path/path.dart';
 
-import '../../presentation/ui/home/inspo_settings_screen.dart';
-
+import '../../presentation/ui/setting/inspo_settings_screen.dart';
 
 class AppRouter {
   // WELCOME ROUTE
@@ -36,7 +35,8 @@ class AppRouter {
   static const String resetPasswordScreen = '/reset-password-screen';
   static const String changePassword = '/change-password-screen';
   static const String signupScreen = '/signup-screen';
-  static const String applicationUnderReviewScreen = '/application-under-review-screen';
+  static const String applicationUnderReviewScreen =
+      '/application-under-review-screen';
 
   // PROFILE SETUP ROUTE
   static const String createProfileScreen = '/create-profile-screen';
@@ -63,17 +63,18 @@ class AppRouter {
     initialLocation: loginScreen,
     routes: <RouteBase>[
       _buildRoute(splashScreen, const SplashScreen()),
-      _buildRoute(loginScreen, LoginScreen()),
+      _buildRoute(loginScreen, const LoginScreen()),
       _buildRoute(forgotPasswordScreen, const ForgotPasswordScreen()),
       _buildRoute(signupScreen, const SignUpScreen()),
-      _buildRoute(otpVerificationScreen,const  OtpScreen()),
       _buildRoute(otpVerificationScreen, const OtpScreen()),
-      _buildRoute(applicationUnderReviewScreen, const ApplicationUnderReviewScreen()),
+      _buildRoute(otpVerificationScreen, const OtpScreen()),
+      _buildRoute(
+          applicationUnderReviewScreen, const ApplicationUnderReviewScreen()),
       _buildRoute(welcomeScreen, const WelcomeScreen()),
       _buildRoute(homeScreen, const InspoHomeScreen()),
       _buildRoute(notificationScreen, const InspoNotificationScreen()),
       _buildRoute(settingsScreen, const InspoSettingsScreen()),
-      _buildRoute(homeMainScreen, InspoHomeMainScreen()),
+      _buildRoute(homeMainScreen, const InspoHomeMainScreen()),
       _buildRoute(editProfileScreen, const InspoEditProfileScreen()),
       _buildRoute(needHelpScreen, InspoNeedHelpScreen()),
       _buildRoute(pastCoverageScreen, const InspoPastCoverageScreen()),

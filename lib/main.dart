@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'config/app_theme.dart';
 import 'config/locator.dart';
-import 'config/router/custom_navigator_observer.dart';
 import 'config/scroll_behaviour.dart';
 import 'data/source/local/hive_database.dart';
 import 'data/source/local/shared_pref.dart';

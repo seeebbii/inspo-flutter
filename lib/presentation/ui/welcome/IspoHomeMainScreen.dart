@@ -1,7 +1,7 @@
 import 'package:clean_architecture_template/presentation/notifiers/bottomNavBar.notifier.dart';
 import 'package:clean_architecture_template/presentation/ui/home/inspo_home_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/inspo_notification_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/inspo_settings_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/event/inspo_notification_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/inspo_settings_screen.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,6 @@
 import 'package:clean_architecture_template/presentation/widgets/inspo_review_circle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/dimensions.dart';
 import 'inspo_button.dart';
@@ -45,7 +46,7 @@ class InspoHomeFoodItem extends StatelessWidget {
                       margin: const EdgeInsets.only(right: 5),
                       width: 21,
                       height: 21,
-                      child: Image.asset("assets/images/instagram.png"),
+                      child: SvgPicture.asset("assets/icons/instagram.svg"),
                     ),
                   ],
                 ),

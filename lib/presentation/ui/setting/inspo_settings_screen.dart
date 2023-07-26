@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:clean_architecture_template/presentation/view_models/edit_profile_VM.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_button.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_settings_item.dart';
 import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../config/router/app_router.dart';
 import '../../../utils/dimensions.dart';
@@ -17,16 +21,31 @@ class InspoSettingsScreen extends StatefulWidget {
 class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
   @override
   Widget build(BuildContext context) {
+    EditProfileScreenVM editProfileScreenVM =
+        context.read<EditProfileScreenVM>();
     return ListView(
       children: [
         Expanded(
           child: Column(
             children: [
               SizedBox(height: context.height * 0.05),
-              SizedBox(
-                height: 150,
-                child: Image.asset("assets/images/profile_image.png"),
-              ),
+              editProfileScreenVM.profilePhoto == null
+                  ? SizedBox(
+                      height: 155,
+                      child: Image.asset("assets/images/profile_image.png"),
+                    )
+                  : Container(
+                      width: 155,
+                      height: 155,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 3),
+                        image: DecorationImage(
+                          image: FileImage(editProfileScreenVM.profilePhoto!),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
               const SizedBox(height: 10),
               Text(
                 "GOT INSPO",
@@ -56,7 +75,7 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
                 text: "EDIT",
                 buttonRadius: 15,
                 onPressed: () {
-                  GoRouter.of(context).go(AppRouter.editProfileScreen);
+                  context.push(AppRouter.editProfileScreen);
                 },
               ),
             ],
