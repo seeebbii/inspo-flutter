@@ -177,7 +177,7 @@ class AppSimpleTextField extends StatelessWidget {
                   left: hasBorders ? 16 : 0,
                   right: 16,
                   top: 15,
-                  bottom: 12.5,
+                  bottom: 15,
                 ),
                 fillColor: AppTheme.textFieldFillColor,
                 border: InputBorder.none,

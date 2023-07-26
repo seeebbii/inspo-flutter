@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:clean_architecture_template/presentation/widgets/inspo_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,7 +10,9 @@ import 'package:provider/provider.dart';
 import '../../../config/app_theme.dart';
 import '../../../config/router/app_router.dart';
 import '../../../utils/dimensions.dart';
+import '../../../utils/file_handler.dart';
 import '../../view_models/authentication_VM.dart';
+import '../../view_models/edit_profile_VM.dart';
 import '../../widgets/app_simple_text_field.dart';
 import '../../widgets/inspo_button.dart';
 
@@ -17,6 +21,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    EditProfileScreenVM editProfileScreenVM =
+        context.watch<EditProfileScreenVM>();
     return Scaffold(
       appBar: const InspoAppBar(),
       body:
@@ -115,23 +121,41 @@ class SignUpScreen extends StatelessWidget {
                         vertical: Dimensions.screenVerticalSpaces),
                     child: Row(
                       children: [
-                        Container(
-                          width: 85,
-                          height: 85,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 3),
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(
-                              "assets/icons/camera.svg",
-                              height: 20,
-                              width: 20,
+                        GestureDetector(
+                          onTap: () {
+                            FileHandler.pickImageFromGallery().then((value) {
+                              if (value == null) return;
+                              editProfileScreenVM.setProfilePhoto(value);
+                            });
+                          },
+                          child: Container(
+                            width: 85,
+                            height: 85,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 3),
+                            ),
+                            child: Center(
+                              child: editProfileScreenVM.profilePhoto == null
+                                  ? SvgPicture.asset(
+                                      "assets/icons/camera.svg",
+                                      height: 20,
+                                      width: 20,
+                                    )
+                                  : ClipRRect(
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Image.file(
+                                        editProfileScreenVM.profilePhoto ??
+                                            File(''),
+                                        fit: BoxFit.cover,
+                                        width: 155,
+                                      ),
+                                    ),
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 9),
+                          margin: const EdgeInsets.only(left: 9),
                           child: Text(
                             "SELFIE TIME! JK UNLESS????",
                             style: Dimensions.customTextStyle(
@@ -284,11 +308,7 @@ class SignUpScreen extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                               decoration: TextDecoration.underline),
                         ),
-                        Image.asset(
-                          "assets/images/ic_upload_file.png",
-                          width: 20,
-                          height: 20,
-                        )
+                        SvgPicture.asset("assets/icons/upload_file.svg"),
                       ],
                     ),
                   ),

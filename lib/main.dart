@@ -29,7 +29,7 @@ class MaterialAppClass extends StatelessWidget {
       child: GetMaterialApp.router(
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
-        title: "Family Tree",
+        title: "Inspo",
         builder: (context, widget) {
           return ScrollConfiguration(
               behavior: const ScrollBehaviorModified(), child: widget!);
