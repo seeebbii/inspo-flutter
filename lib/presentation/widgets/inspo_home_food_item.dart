@@ -1,5 +1,6 @@
 import 'package:clean_architecture_template/presentation/widgets/inspo_review_circle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/dimensions.dart';
 import 'inspo_button.dart';
@@ -45,35 +46,39 @@ class InspoHomeFoodItem extends StatelessWidget {
                       margin: const EdgeInsets.only(right: 5),
                       width: 21,
                       height: 21,
-                      child: Image.asset("assets/images/instagram.png"),
+                      child: SvgPicture.asset("assets/icons/instagram.svg"),
                     ),
                   ],
                 ),
                 Row(
                   children: [
-                    InspoButton(
-                        text: "COVER IT",
+                    Expanded(
+                      child: InspoButton(
+                          text: "COVER IT",
+                          width: 119,
+                          height: 33,
+                          buttonColor: Colors.black,
+                          buttonRadius: 7,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          textColor: Colors.white,
+                          borderWidth: 1,
+                          onPressed: onTap),
+                    ),
+                    Expanded(
+                      child: InspoButton(
+                        text: "NUDGE IT",
                         width: 119,
                         height: 33,
-                        buttonColor: Colors.black,
+                        marginLeft: 8,
+                        buttonColor: Colors.white,
                         buttonRadius: 7,
                         fontSize: 10,
                         fontWeight: FontWeight.w400,
-                        textColor: Colors.white,
+                        textColor: Colors.black,
                         borderWidth: 1,
-                        onPressed: onTap),
-                    InspoButton(
-                      text: "NUDGE IT",
-                      width: 119,
-                      height: 33,
-                      marginLeft: 8,
-                      buttonColor: Colors.white,
-                      buttonRadius: 7,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                      textColor: Colors.black,
-                      borderWidth: 1,
-                      onPressed: () {},
+                        onPressed: () {},
+                      ),
                     ),
                   ],
                 ),

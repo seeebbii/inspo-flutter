@@ -96,8 +96,8 @@ class AppSimpleTextField extends StatelessWidget {
             : Text(
                 title,
                 style: Dimensions.customTextStyle(
-                  18,
-                  FontWeight.w400,
+                  16,
+                  FontWeight.w700,
                   AppTheme.blackColor,
                 ),
               ),
@@ -109,10 +109,15 @@ class AppSimpleTextField extends StatelessWidget {
             bottom: marginBottom,
           ),
           decoration: BoxDecoration(
-              border: hasBorders
-                  ? Border.all(width: borderWidth, color: AppTheme.blackColor)
-                  : const Border.fromBorderSide(BorderSide.none),
-              borderRadius: BorderRadius.circular(borderRadius)),
+            border: hasBorders
+                ? Border.all(width: borderWidth, color: AppTheme.blackColor)
+                : Border(
+                    bottom: BorderSide(
+                        width: borderWidth, color: AppTheme.blackColor),
+                  ),
+            borderRadius:
+                hasBorders ? BorderRadius.circular(borderRadius) : null,
+          ),
           child: TextFormField(
               enabled: enabled,
               onTap: onTap,
@@ -168,17 +173,21 @@ class AppSimpleTextField extends StatelessWidget {
                 AppTheme.blackColor,
               ),
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(
-                  left: 16,
+                contentPadding: EdgeInsets.only(
+                  left: hasBorders ? 16 : 0,
                   right: 16,
                   top: 15,
-                  bottom: 12.5,
+                  bottom: 15,
                 ),
                 fillColor: AppTheme.textFieldFillColor,
                 border: InputBorder.none,
                 filled: false,
                 hintText: hintText,
-                hintStyle: const TextStyle(color: Colors.black),
+                hintStyle: Dimensions.customTextStyle(
+                  16,
+                  FontWeight.w600,
+                  const Color(0xFF5E6272),
+                ),
                 // labelText: fieldNameText,
                 floatingLabelBehavior: FloatingLabelBehavior.auto,
                 label: Text(fieldNameText),
@@ -215,7 +224,10 @@ class AppSimpleTextField extends StatelessWidget {
                           ],
                         ),
                       )
-                    : icon,
+                    : Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: icon,
+                      ),
               )),
         ),
       ],

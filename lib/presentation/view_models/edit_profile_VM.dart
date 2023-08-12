@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
@@ -14,7 +16,8 @@ class EditProfileScreenVM extends ChangeNotifier {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
@@ -23,8 +26,10 @@ class EditProfileScreenVM extends ChangeNotifier {
   final TextEditingController _tiktokController = TextEditingController();
   final TextEditingController _twitterController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _preferredTimingController = TextEditingController();
+  final TextEditingController _preferredTimingController =
+      TextEditingController();
   final TextEditingController _youtubeController = TextEditingController();
+  File? _profilePhoto;
 
   // Phone Number Without Country Code
   String phoneNumberWithoutCountryCode = '';
@@ -48,7 +53,8 @@ class EditProfileScreenVM extends ChangeNotifier {
   TextEditingController get usernameController => _usernameController;
   TextEditingController get phoneController => _phoneController;
   TextEditingController get passwordController => _passwordController;
-  TextEditingController get confirmPasswordController => _confirmPasswordController;
+  TextEditingController get confirmPasswordController =>
+      _confirmPasswordController;
   TextEditingController get rePasswordController => _rePasswordController;
   TextEditingController get dobController => _dobController;
   TextEditingController get bioController => _bioController;
@@ -56,7 +62,8 @@ class EditProfileScreenVM extends ChangeNotifier {
   TextEditingController get instagramController => _instagramController;
   TextEditingController get tiktokController => _tiktokController;
   TextEditingController get twitterController => _twitterController;
-  TextEditingController get preferredTimingController => _preferredTimingController;
+  TextEditingController get preferredTimingController =>
+      _preferredTimingController;
   TextEditingController get addressController => _addressController;
   TextEditingController get youtubeController => _youtubeController;
 
@@ -64,6 +71,7 @@ class EditProfileScreenVM extends ChangeNotifier {
   bool get isRePassVisible => _isRePassVisible;
   int get authRadioValue => _authMethodRadioValue;
   int get genderRadioValue => _genderRadioValue;
+  File? get profilePhoto => _profilePhoto;
 
   bool keepLoggedIn = true;
 
@@ -78,6 +86,11 @@ class EditProfileScreenVM extends ChangeNotifier {
   bool emailAvailable = true;
 
   String countryCodeStr = 'IQ';
+
+  void setProfilePhoto(File? image) {
+    _profilePhoto = image;
+    notifyListeners();
+  }
 
   void setCountryCodeStr(String str) {
     countryCodeStr = str;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/inspo_home_food_item.dart';
-import 'dialog/inspo_confirmation_dialog.dart';
+import 'inspo_confirmation_dialog.dart';
 
 class InspoHomeScreen extends StatefulWidget {
   const InspoHomeScreen({Key? key}) : super(key: key);

@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      context.go(AppRouter.forgotPasswordScreen);
+                      context.push(AppRouter.forgotPasswordScreen);
                     },
                     child: Text(
                       "Forgot password?",

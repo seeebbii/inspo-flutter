@@ -1,4 +1,4 @@
-import 'package:clean_architecture_template/presentation/widgets/inspo_custom_switch.dart';
+import 'package:clean_architecture_template/presentation/widgets/inspo_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
