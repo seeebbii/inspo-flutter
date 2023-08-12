@@ -1,26 +1,25 @@
-import 'package:clean_architecture_template/presentation/widgets/inspo_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../../config/app_theme.dart';
-import '../../../config/router/app_router.dart';
-import '../../../utils/dimensions.dart';
-import '../../view_models/authentication_VM.dart';
-import '../../widgets/app_simple_text_field.dart';
-import '../../widgets/inspo_button.dart';
+import '../../../../config/app_theme.dart';
+import '../../../../config/router/app_router.dart';
+import '../../../../utils/dimensions.dart';
+import '../../../view_models/concept/concept_authentication_VM.dart';
+import '../../../widgets/app_simple_text_field.dart';
+import '../../../widgets/inspo_app_bar.dart';
+import '../../../widgets/inspo_button.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class InspoConceptSignUpScreen extends StatelessWidget {
+  const InspoConceptSignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const InspoAppBar(),
       body:
-          Consumer<AuthenticationScreenVM>(builder: (context, model, builder) {
+      Consumer<ConceptAuthenticationScreenVM>(builder: (context, model, builder) {
         return ListView(
           children: [
             Padding(
@@ -119,8 +118,8 @@ class SignUpScreen extends StatelessWidget {
                           width: 85,
                           height: 85,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
                             border: Border.all(width: 3),
+                            borderRadius: BorderRadius.circular(4)
                           ),
                           child: Center(
                             child: SvgPicture.asset(
@@ -133,7 +132,7 @@ class SignUpScreen extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(left: 9),
                           child: Text(
-                            "SELFIE TIME! JK UNLESS????",
+                            "SEND BEST PICS",
                             style: Dimensions.customTextStyle(
                               14,
                               FontWeight.w400,
@@ -145,13 +144,13 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   AppSimpleTextField(
-                      title: "full name",
+                      title: "CONCEPT NAME",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
                       borderRadius: 8,
                       marginBottom: 5,
-                      controller: model.fullNameController,
+                      controller: model.conceptNameController,
                       fieldNameText: "",
                       isName: true,
                       onChange: (value) {
@@ -159,13 +158,13 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "TELL US ABOUT YOUR SELF",
+                      title: "DESCRIPTION",
                       height: 106,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
                       marginBottom: 5,
                       borderRadius: 8,
-                      controller: model.bioController,
+                      controller: model.descriptionController,
                       fieldNameText: "",
                       isName: true,
                       onChange: (value) {
@@ -173,13 +172,27 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "DATE OF BIRTH",
+                      title: "CATEGORY",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
                       marginBottom: 5,
                       borderRadius: 8,
-                      controller: model.dobController,
+                      controller: model.categoryController,
+                      fieldNameText: "",
+                      onChange: (value) {
+                        print(value);
+                      },
+                      keyboard: TextInputType.text),
+                  AppSimpleTextField(
+                      title: "YEAR OF LAUNCH",
+                      height: 55,
+                      width: MediaQuery.of(context).size.width,
+                      borderWidth: 2,
+                      marginBottom: 5,
+                      borderRadius: 8,
+                      hintText: "MM/DD/YYYY",
+                      controller: model.yearOfLaunchController,
                       fieldNameText: "",
                       onChange: (value) {
                         print(value);
@@ -201,13 +214,14 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
+                      title: "WEBSITE",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
-                      icon: Image.asset("assets/images/tiktok.png"),
-                      borderRadius: 8,
                       marginBottom: 5,
-                      controller: model.tiktokController,
+                      hintText: "https://",
+                      borderRadius: 8,
+                      controller: model.websiteController,
                       fieldNameText: "",
                       isName: true,
                       onChange: (value) {
@@ -215,42 +229,13 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      height: 55,
-                      width: MediaQuery.of(context).size.width,
-                      borderWidth: 2,
-                      icon: Image.asset("assets/images/twitter.png"),
-                      borderRadius: 8,
-                      marginBottom: 5,
-                      controller: model.twitterController,
-                      fieldNameText: "",
-                      isName: true,
-                      onChange: (value) {
-                        print(value);
-                      },
-                      keyboard: TextInputType.text),
-                  AppSimpleTextField(
-                      title: "PREFERRED TIMING",
-                      height: 55,
-                      width: MediaQuery.of(context).size.width,
-                      borderWidth: 2,
-                      marginBottom: 5,
-                      hintText: "TO RECEIVE AND ATTEND COVERS",
-                      borderRadius: 8,
-                      controller: model.preferredTimingController,
-                      fieldNameText: "TO RECEIVE AND ATTEND COVERS",
-                      isName: true,
-                      onChange: (value) {
-                        print(value);
-                      },
-                      keyboard: TextInputType.text),
-                  AppSimpleTextField(
-                      title: "CONTACT",
+                      title: "DELIVERY PLATFORMS",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
                       marginBottom: 5,
                       borderRadius: 8,
-                      controller: model.phoneController,
+                      controller: model.deliveryPlatformsController,
                       fieldNameText: "",
                       isPhone: true,
                       onChange: (value) {
@@ -258,13 +243,27 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "ADDRESS",
+                      title: "CONTACT EMAIL",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
                       marginBottom: 15,
                       borderRadius: 8,
-                      controller: model.addressController,
+                      controller: model.contactEmailController,
+                      fieldNameText: "",
+                      isName: true,
+                      onChange: (value) {
+                        print(value);
+                      },
+                      keyboard: TextInputType.text),
+                  AppSimpleTextField(
+                      title: "COUNTRY",
+                      height: 55,
+                      width: MediaQuery.of(context).size.width,
+                      borderWidth: 2,
+                      marginBottom: 15,
+                      borderRadius: 8,
+                      controller: model.countryController,
                       fieldNameText: "",
                       isName: true,
                       onChange: (value) {
@@ -272,26 +271,64 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "UPLOAD FILE",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              decoration: TextDecoration.underline),
-                        ),
-                        Image.asset(
-                          "assets/images/ic_upload_file.png",
-                          width: 20,
-                          height: 20,
-                        )
-                      ],
+                    margin: EdgeInsets.only(top: 6),
+                    child: Text(
+                      "BUSINESS TYPE",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18
+                      ),
                     ),
                   ),
+                  SizedBox(height:4),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: InspoButton(
+                            text: "LOCAL",
+                            buttonColor: Colors.white,
+                            buttonRadius: 9,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            textColor: Colors.black,
+                            borderWidth: 1,
+                            onPressed: () {
+                            },
+                          ),
+                      ),
+                      SizedBox(width: 9),
+                      Expanded(
+                          child: InspoButton(
+                            text: "FRANCHISE",
+                            buttonColor: Colors.white,
+                            buttonRadius: 9,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            textColor: Colors.black,
+                            borderWidth: 1,
+                            onPressed: () {
+                              GoRouter.of(context).go(AppRouter.otpVerificationScreen);
+                            },
+                          ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  AppSimpleTextField(
+                      title: "CONTACT",
+                      height: 55,
+                      width: MediaQuery.of(context).size.width,
+                      borderWidth: 2,
+                      marginBottom: 15,
+                      borderRadius: 8,
+                      icon: Image.asset("assets/images/whatsapp.png"),
+                      controller: model.contactController,
+                      fieldNameText: "",
+                      isName: true,
+                      onChange: (value) {
+                        print(value);
+                      },
+                      keyboard: TextInputType.text),
                   Row(
                     children: [
                       Checkbox(

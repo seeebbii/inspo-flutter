@@ -24,8 +24,8 @@ class AppTheme {
   static const Color blueBlues = Color(0xFF174378);
 
   static const Color green = Colors.green;
-  static const Color lightGreen = Color(0xFF9FFF99);
-  static const Color red = Colors.red;
+  static const Color lightGreen = Color(0xFFA9FF74);
+  static const Color redButton = Color(0xFFFF3C3C);
   static const Color lightRed = Color(0xFFEE9281);
   static const Color orange = Colors.deepOrange;
   static const Color blue = Color(0xFF6C63FF);

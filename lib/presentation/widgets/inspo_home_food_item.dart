@@ -87,7 +87,7 @@ class InspoHomeFoodItem extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: 5,
                           itemBuilder: (context, index) {
-                            return const InspoReviewCircle();
+                            return InspoReviewCircle(width: 10,height: 10,borderWidth: 3);
                           },
                         ),
                       ),

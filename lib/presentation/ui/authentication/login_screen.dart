@@ -179,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   textColor: Colors.white,
                   borderWidth: 1,
                   onPressed: () {
-                    context.push(AppRouter.welcomeScreen);
+                    context.push("${AppRouter.welcomeScreen}");
                   },
                 ),
                 const SizedBox(height: 25),
@@ -193,7 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      context.push(AppRouter.signupScreen);
+                      authenticationScreenVM.userType == 0 ?
+                      context.push(AppRouter.signupScreen) :
+                      context.push(AppRouter.conceptSignupScreen);
                     },
                     child: Text(
                       "SIGN UP HERE.",

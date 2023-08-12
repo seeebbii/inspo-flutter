@@ -83,7 +83,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     textColor: Colors.black,
                     borderWidth: 1,
                     onPressed: () {
-                      context.go(AppRouter.homeMainScreen);
+                      //context.go("${AppRouter.homeMainScreen}");
+                      context.go("${AppRouter.conceptHomeMainScreen}");
                     },
                   ),
 
