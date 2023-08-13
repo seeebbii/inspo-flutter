@@ -23,50 +23,46 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
             SizedBox(
               height: 25,
               width: MediaQuery.of(context).size.width,
-              child: Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                          itemCount: _filteredList.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InspoButton(
-                              width: 100,
-                              height: 30,
-                              marginLeft: 3,
-                              text: _filteredList[index],
-                              buttonRadius: 12,
-                              borderWidth: 2,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                              buttonColor:
-                                  _selectedFilter == _filteredList[index]
-                                      ? Colors.black
-                                      : Colors.white,
-                              textColor: _selectedFilter == _filteredList[index]
-                                  ? Colors.white
-                                  : Colors.black,
-                              onPressed: () {
-                                setState(() {
-                                  _selectedFilter = _filteredList[index];
-                                });
-                              },
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: Image.asset("assets/images/ic_filter.png"),
-                    )
-                  ],
-                ),
+              child: Row(
+                children: [
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _filteredList.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return InspoButton(
+                          width: 100,
+                          height: 30,
+                          marginLeft: 3,
+                          text: _filteredList[index],
+                          buttonRadius: 12,
+                          borderWidth: 2,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          buttonColor: _selectedFilter == _filteredList[index]
+                              ? Colors.black
+                              : Colors.white,
+                          textColor: _selectedFilter == _filteredList[index]
+                              ? Colors.white
+                              : Colors.black,
+                          onPressed: () {
+                            setState(() {
+                              _selectedFilter = _filteredList[index];
+                            });
+                          },
+                        );
+                      }),
+                  const Spacer(),
+                  SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: Image.asset("assets/images/ic_filter.png"),
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 10),
             Expanded(
-              // Wrap ListView.builder with Expanded
               child: ListView.builder(
                 itemCount: 15,
                 itemBuilder: (context, index) {

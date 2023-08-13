@@ -25,61 +25,59 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
         context.read<EditProfileScreenVM>();
     return ListView(
       children: [
-        Expanded(
-          child: Column(
-            children: [
-              SizedBox(height: context.height * 0.05),
-              editProfileScreenVM.profilePhoto == null
-                  ? SizedBox(
-                      height: 155,
-                      child: Image.asset("assets/images/profile_image.png"),
-                    )
-                  : Container(
-                      width: 155,
-                      height: 155,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 3),
-                        image: DecorationImage(
-                          image: FileImage(editProfileScreenVM.profilePhoto!),
-                          fit: BoxFit.cover,
-                        ),
+        Column(
+          children: [
+            SizedBox(height: context.height * 0.05),
+            editProfileScreenVM.profilePhoto == null
+                ? SizedBox(
+                    height: 155,
+                    child: Image.asset("assets/images/profile_image.png"),
+                  )
+                : Container(
+                    width: 155,
+                    height: 155,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(width: 3),
+                      image: DecorationImage(
+                        image: FileImage(editProfileScreenVM.profilePhoto!),
+                        fit: BoxFit.cover,
                       ),
                     ),
-              const SizedBox(height: 10),
-              Text(
-                "GOT INSPO",
-                style: Dimensions.customTextStyle(
-                  32,
-                  FontWeight.w700,
-                  Colors.black,
-                ),
+                  ),
+            const SizedBox(height: 10),
+            Text(
+              "GOT INSPO",
+              style: Dimensions.customTextStyle(
+                32,
+                FontWeight.w700,
+                Colors.black,
               ),
-              Text(
-                "Gotinspo@email.com".toUpperCase(),
-                style: Dimensions.customTextStyle(
-                  14,
-                  FontWeight.w600,
-                  Colors.black,
-                ),
+            ),
+            Text(
+              "Gotinspo@email.com".toUpperCase(),
+              style: Dimensions.customTextStyle(
+                14,
+                FontWeight.w600,
+                Colors.black,
               ),
-              InspoButton(
-                width: 73,
-                height: 25,
-                borderWidth: 2,
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-                textColor: Colors.black,
-                buttonColor: Colors.white,
-                marginTop: 12,
-                text: "EDIT",
-                buttonRadius: 15,
-                onPressed: () {
-                  context.push(AppRouter.editProfileScreen);
-                },
-              ),
-            ],
-          ),
+            ),
+            InspoButton(
+              width: 73,
+              height: 25,
+              borderWidth: 2,
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+              textColor: Colors.black,
+              buttonColor: Colors.white,
+              marginTop: 12,
+              text: "EDIT",
+              buttonRadius: 15,
+              onPressed: () {
+                context.push(AppRouter.editProfileScreen);
+              },
+            ),
+          ],
         ),
         const SizedBox(height: 30),
         InspoSettingsItem(name: "DARK MODE", switchVisible: true),

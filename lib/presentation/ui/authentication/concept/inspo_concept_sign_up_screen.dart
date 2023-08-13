@@ -18,8 +18,8 @@ class InspoConceptSignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const InspoAppBar(),
-      body:
-      Consumer<ConceptAuthenticationScreenVM>(builder: (context, model, builder) {
+      body: Consumer<ConceptAuthenticationScreenVM>(
+          builder: (context, model, builder) {
         return ListView(
           children: [
             Padding(
@@ -118,9 +118,8 @@ class InspoConceptSignUpScreen extends StatelessWidget {
                           width: 85,
                           height: 85,
                           decoration: BoxDecoration(
-                            border: Border.all(width: 3),
-                            borderRadius: BorderRadius.circular(4)
-                          ),
+                              border: Border.all(width: 3),
+                              borderRadius: BorderRadius.circular(4)),
                           child: Center(
                             child: SvgPicture.asset(
                               "assets/icons/camera.svg",
@@ -205,7 +204,7 @@ class InspoConceptSignUpScreen extends StatelessWidget {
                       borderWidth: 2,
                       marginBottom: 5,
                       borderRadius: 8,
-                      icon: Image.asset("assets/images/instagram.png"),
+                      icon: SvgPicture.asset("assets/icons/instagram.svg"),
                       controller: model.instagramController,
                       fieldNameText: "",
                       isName: true,
@@ -271,45 +270,43 @@ class InspoConceptSignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   Container(
-                    margin: EdgeInsets.only(top: 6),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 6),
+                    child: const Text(
                       "BUSINESS TYPE",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 18
-                      ),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
                     ),
                   ),
-                  SizedBox(height:4),
+                  const SizedBox(height: 4),
                   Row(
                     children: [
                       Expanded(
-                          child: InspoButton(
-                            text: "LOCAL",
-                            buttonColor: Colors.white,
-                            buttonRadius: 9,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            textColor: Colors.black,
-                            borderWidth: 1,
-                            onPressed: () {
-                            },
-                          ),
+                        child: InspoButton(
+                          text: "LOCAL",
+                          buttonColor: Colors.white,
+                          buttonRadius: 9,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          textColor: Colors.black,
+                          borderWidth: 1,
+                          onPressed: () {},
+                        ),
                       ),
                       SizedBox(width: 9),
                       Expanded(
-                          child: InspoButton(
-                            text: "FRANCHISE",
-                            buttonColor: Colors.white,
-                            buttonRadius: 9,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            textColor: Colors.black,
-                            borderWidth: 1,
-                            onPressed: () {
-                              GoRouter.of(context).go(AppRouter.otpVerificationScreen);
-                            },
-                          ),
+                        child: InspoButton(
+                          text: "FRANCHISE",
+                          buttonColor: Colors.white,
+                          buttonRadius: 9,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          textColor: Colors.black,
+                          borderWidth: 1,
+                          onPressed: () {
+                            GoRouter.of(context)
+                                .go(AppRouter.otpVerificationScreen);
+                          },
+                        ),
                       )
                     ],
                   ),
@@ -321,7 +318,7 @@ class InspoConceptSignUpScreen extends StatelessWidget {
                       borderWidth: 2,
                       marginBottom: 15,
                       borderRadius: 8,
-                      icon: Image.asset("assets/images/whatsapp.png"),
+                      icon: SvgPicture.asset("assets/icons/whatsapp.svg"),
                       controller: model.contactController,
                       fieldNameText: "",
                       isName: true,

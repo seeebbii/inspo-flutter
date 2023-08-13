@@ -20,7 +20,6 @@ class ConceptHomeScreen extends StatefulWidget {
 }
 
 class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<BottomNavBarProvider>(context);
@@ -28,208 +27,179 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
 
     return Scaffold(
       body: Consumer<ConceptHomeScreenNotifier>(
-        builder: (context,model,builder){
-          return ListView(
-            children: [
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  SizedBox(width: 19),
-                  GestureDetector(
-                    onTap: (){
-                      provider.selectIndex(4);
-                    },
-                    child: Text(
-                        "REQUESTS",
-                        style: TextStyle(
-                            fontFamily: "assets/fonts/Halvetica.ttf",
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16
-                        )
-                    ),
-                  ),
-
-                  Container(
-                    width: 20,
-                    height: 25,
-                    child: IconButton(
-                      icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
-                      onPressed: () {
-
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 210,
-                child:  Expanded(
-                  child: Row(
-                    children: [
-
-                      Container(
-                        width: 20,
-                        height: 25,
-                        child: IconButton(
-                          icon: SvgPicture.asset("assets/icons/ic_arrow_left.svg"),
-                          onPressed: () {
-                            if (model.currentPageIndex > 0) {
-                              model.pageController.previousPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                          },
-                        ),
-
-                      ),
-                      Expanded(
-                        child: PageView(
-                          controller: model.pageController,
-                          onPageChanged: (index) {
-                            model.setCurrentPageIndex(index);
-                          },
-                          children: [
-                            InspoConceptHomeRequestItemWidget(),
-                          ],
-                        ),
-                      ),
-
-                      Container(
-                        width: 20,
-                        height: 25,
-                        child: IconButton(
-                          icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
-                          onPressed: () {
-                            if (model.currentPageIndex < 2) {
-                              model.pageController.nextPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                    ],
+          builder: (context, model, builder) {
+        return ListView(
+          children: [
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                const SizedBox(width: 19),
+                GestureDetector(
+                  onTap: () {
+                    provider.selectIndex(4);
+                  },
+                  child: const Text("REQUESTS",
+                      style: TextStyle(
+                          fontFamily: "assets/fonts/Halvetica.ttf",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16)),
+                ),
+                SizedBox(
+                  width: 20,
+                  height: 25,
+                  child: IconButton(
+                    icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
+                    onPressed: () {},
                   ),
                 ),
-              ),
-              SizedBox(height: 14),
-              Row(
+              ],
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 210,
+              child: Row(
                 children: [
-                  SizedBox(width: 19),
-                  GestureDetector(
-                    onTap: (){
-                      provider.selectIndex(3);
-                    },
-                    child: Text(
-                        "REVIEWS",
-                        style: TextStyle(
-                            fontFamily: "assets/fonts/Halvetica.ttf",
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16
-                        )
+                  SizedBox(
+                    width: 20,
+                    height: 25,
+                    child: IconButton(
+                      icon: SvgPicture.asset("assets/icons/ic_arrow_left.svg"),
+                      onPressed: () {
+                        if (model.currentPageIndex > 0) {
+                          model.pageController.previousPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
                     ),
                   ),
-
-                  Container(
+                  Expanded(
+                    child: PageView(
+                      controller: model.pageController,
+                      onPageChanged: (index) {
+                        model.setCurrentPageIndex(index);
+                      },
+                      children: const [
+                        InspoConceptHomeRequestItemWidget(),
+                        InspoConceptHomeRequestItemWidget(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
                     width: 20,
                     height: 25,
                     child: IconButton(
                       icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
                       onPressed: () {
+                        if (model.currentPageIndex < 2) {
+                          model.pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        }
                       },
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-
-              Container(
-                height: 172,
-                child:  Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 20,
-                        height: 25,
-                        child: IconButton(
-                          icon: SvgPicture.asset("assets/icons/ic_arrow_left.svg"),
-                          onPressed: () {
-                            if (model.currentPageIndex < 2) {
-
-                            }
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: PageView(
-                          controller: model.pageController,
-                          onPageChanged: (index) {
-                            model.setCurrentPageIndex(index);
-                          },
-                          children: [
-                            InspoConceptHomeReviewItemWidget()
-                          ],
-                        ),
-                      ),
-
-                      Container(
-                        width: 20,
-                        height: 25,
-                        child: IconButton(
-                          icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
-                          onPressed: () {
-
-                          },
-                        ),
-                      ),
-                    ],
+            ),
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                const SizedBox(width: 19),
+                GestureDetector(
+                  onTap: () {
+                    provider.selectIndex(3);
+                  },
+                  child: const Text("REVIEWS",
+                      style: TextStyle(
+                          fontFamily: "assets/fonts/Halvetica.ttf",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16)),
+                ),
+                SizedBox(
+                  width: 20,
+                  height: 25,
+                  child: IconButton(
+                    icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
+                    onPressed: () {},
                   ),
                 ),
-              ),
-              SizedBox(height: 39),
-              Row(
+              ],
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 172,
+              child: Row(
                 children: [
-                  SizedBox(width: 19),
-                  GestureDetector(
-                    onTap: (){
-                      provider.selectIndex(5);
-                    },
-                    child: Text(
-                        "ACTIVE COVERAGES",
-                        style: TextStyle(
-                            fontFamily: "assets/fonts/Halvetica.ttf",
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16
-                        )
+                  SizedBox(
+                    width: 20,
+                    height: 25,
+                    child: IconButton(
+                      icon: SvgPicture.asset("assets/icons/ic_arrow_left.svg"),
+                      onPressed: () {
+                        if (model.currentPageIndex < 2) {}
+                      },
                     ),
                   ),
-
-                  Container(
+                  Expanded(
+                    child: PageView(
+                      controller: model.pageController,
+                      onPageChanged: (index) {
+                        model.setCurrentPageIndex(index);
+                      },
+                      children: const [
+                        InspoConceptHomeReviewItemWidget(),
+                        InspoConceptHomeReviewItemWidget(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
                     width: 20,
                     height: 25,
                     child: IconButton(
                       icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 9),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 19.0),
-                child: InspoConceptActiveCoverageItemWidget(),
-              ),
-              SizedBox(height: 30),
-            ],
-          );
-        }
-      ),
+            ),
+            const SizedBox(height: 39),
+            Row(
+              children: [
+                const SizedBox(width: 19),
+                GestureDetector(
+                  onTap: () {
+                    provider.selectIndex(5);
+                  },
+                  child: const Text("ACTIVE COVERAGES",
+                      style: TextStyle(
+                          fontFamily: "assets/fonts/Halvetica.ttf",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16)),
+                ),
+                SizedBox(
+                  width: 20,
+                  height: 25,
+                  child: IconButton(
+                    icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 9),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 19.0),
+              child: InspoConceptActiveCoverageItemWidget(),
+            ),
+            const SizedBox(height: 30),
+          ],
+        );
+      }),
     );
   }
 }
