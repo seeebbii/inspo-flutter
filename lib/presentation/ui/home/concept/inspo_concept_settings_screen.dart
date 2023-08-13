@@ -56,8 +56,7 @@ class _InspoConceptSettingsScreenState extends State<InspoConceptSettingsScreen>
                 text: "EDIT",
                 buttonRadius: 15,
                 onPressed: () {
-                  GoRouter.of(context).go(AppRouter.conceptEditProfileScreen);
-                },
+                  context.push(AppRouter.conceptEditProfileScreen);                },
               ),
             ],
           ),
@@ -72,14 +71,13 @@ class _InspoConceptSettingsScreenState extends State<InspoConceptSettingsScreen>
           },
         ),
         InspoSettingsItem(
-          name: "PAST COVERAGE",
+          name: "SECRET",
           switchVisible: false,
           onTap: () {
             context.push(AppRouter.pastCoverageScreen);
           },
         ),
         InspoSettingsItem(name: "NOTIFICATIONS", switchVisible: true),
-        InspoSettingsItem(name: "TUTORIAL", switchVisible: false),
         const SizedBox(height: 20),
         Column(
           children: [

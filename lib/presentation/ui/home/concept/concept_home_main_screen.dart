@@ -1,10 +1,11 @@
 import 'package:clean_architecture_template/presentation/notifiers/bottomNavBar.notifier.dart';
 import 'package:clean_architecture_template/presentation/ui/home/concept/concept_calendar_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/concept/concept_home_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_request_accepted_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_view_all_coverage_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_view_all_reviews_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/concept/inspo_concept_settings_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/inspo_home_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/inspo_notification_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/home/inspo_settings_screen.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_bottom_nav.dart';
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,14 @@ Widget _buildScreen(int currentIndex) {
       return const ConceptCalendarScreen();
     case 2:
       return const InspoConceptSettingsScreen();
+    case 3:
+      return const ConceptViewAllReviewsScreen();
+    case 4:
+      return const ConceptCalendarScreen();
+    case 5:
+      return const ConceptViewAllCoverageScreen();
+    case 6:
+      return  ConceptRequestAcceptedSreen();
     default:
       return const ConceptHomeScreen();
   }

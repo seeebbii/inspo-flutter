@@ -7,14 +7,15 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../../config/app_theme.dart';
-import '../../../config/router/app_router.dart';
-import '../../../utils/dimensions.dart';
-import '../../../utils/file_handler.dart';
-import '../../view_models/authentication_VM.dart';
-import '../../view_models/edit_profile_VM.dart';
-import '../../widgets/app_simple_text_field.dart';
-import '../../widgets/inspo_button.dart';
+import '../../../../config/app_theme.dart';
+import '../../../../config/router/app_router.dart';
+import '../../../../utils/dimensions.dart';
+import '../../../../utils/file_handler.dart';
+import '../../../view_models/authentication_VM.dart';
+import '../../../view_models/edit_profile_VM.dart';
+import '../../../widgets/app_simple_text_field.dart';
+import '../../../widgets/inspo_button.dart';
+
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);

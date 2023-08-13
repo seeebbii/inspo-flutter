@@ -5,6 +5,7 @@ import 'package:clean_architecture_template/presentation/notifiers/conceptHomeSc
 import 'package:clean_architecture_template/presentation/notifiers/connection.notifier.dart';
 import 'package:clean_architecture_template/presentation/view_models/authentication_VM.dart';
 import 'package:clean_architecture_template/presentation/view_models/concept/concept_authentication_VM.dart';
+import 'package:clean_architecture_template/presentation/view_models/concept/concept_edit_profile_VM.dart';
 import 'package:clean_architecture_template/presentation/view_models/edit_profile_VM.dart';
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_home_request_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,10 @@ class MultiProviders extends StatelessWidget {
         ),
         ChangeNotifierProvider<ConceptCalendarScreenNotifier>(
           create: (BuildContext context) => ConceptCalendarScreenNotifier(),
+        ),
+
+        ChangeNotifierProvider<ConceptEditProfileScreenVM>(
+          create: (BuildContext context) => ConceptEditProfileScreenVM(),
         ),
       ],
       child: child,

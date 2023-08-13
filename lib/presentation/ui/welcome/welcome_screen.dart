@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../config/router/app_router.dart';
 import '../../../utils/dimensions.dart';
 import '../../notifiers/bottomNavBar.notifier.dart';
+import '../../view_models/authentication_VM.dart';
 import '../../widgets/inspo_bottom_nav.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -16,8 +17,12 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+
   @override
   Widget build(BuildContext context) {
+    AuthenticationScreenVM authenticationScreenVM =
+    Provider.of<AuthenticationScreenVM>(context, listen: true);
+
     return Scaffold(
       appBar: const InspoAppBar(),
       body: ListView(
@@ -83,7 +88,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     textColor: Colors.black,
                     borderWidth: 1,
                     onPressed: () {
-                      //context.go("${AppRouter.homeMainScreen}");
+                      authenticationScreenVM.userType == 0 ?
+                      context.go("${AppRouter.homeMainScreen}") :
                       context.go("${AppRouter.conceptHomeMainScreen}");
                     },
                   ),

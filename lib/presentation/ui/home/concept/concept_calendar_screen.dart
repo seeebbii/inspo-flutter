@@ -34,10 +34,10 @@ class ConceptCalendarScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return InspoConceptCalendarRequestItemWidget(
                           onRequestAccept: (){
-                            model.setRequestAccepted(true);
+                            //model.setRequestAccepted(true);
                           },
                           onRequestDeny: (){
-                            model.setRequestDenied(true);
+                            //model.setRequestDenied(true);
                           },
                         );
                       });

@@ -3,7 +3,10 @@ import 'package:clean_architecture_template/presentation/ui/authentication/appli
 import 'package:clean_architecture_template/presentation/ui/authentication/forgot_password_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/login_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/authentication/sign_up_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_edit_profile_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_home_main_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_request_accepted_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_view_all_reviews_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/setting/InspoNeedHelpScreen.dart';
 import 'package:clean_architecture_template/presentation/ui/welcome/IspoHomeMainScreen.dart';
 import 'package:clean_architecture_template/presentation/ui/setting/edit_profile_screen.dart';
@@ -18,6 +21,8 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path/path.dart';
 
+import '../../presentation/ui/authentication/concept/inspo_concept_sign_up_screen.dart';
+import '../../presentation/ui/authentication/influencer/sign_up_screen.dart';
 import '../../presentation/ui/setting/inspo_settings_screen.dart';
 
 class AppRouter {
@@ -37,6 +42,8 @@ class AppRouter {
   static const String signupScreen = '/signup-screen';
   static const String applicationUnderReviewScreen =
       '/application-under-review-screen';
+  static const String conceptEditProfileScreen = '/concept-edit-profile-screen';
+  static const String conceptSignupScreen = '/concept-signup-screen';
 
   // PROFILE SETUP ROUTE
   static const String createProfileScreen = '/create-profile-screen';
@@ -56,6 +63,9 @@ class AppRouter {
   static const String editProfileScreen = '/edit-profile-screen';
   static const String needHelpScreen = '/need-help-screen';
   static const String pastCoverageScreen = '/past-coverage-screen';
+  static const String conceptHomeMainScreen = '/concept-home-main-screen';
+  static const String conceptViewAllReviewScreen = '/concept-view-all-review-screen';
+  static const String conceptRequestAcceptedScreen = '/concept-request-accepted-screen';
 
   static final GoRouter router = GoRouter(
     observers: [CustomNavigatorObserver()],
@@ -78,6 +88,11 @@ class AppRouter {
       _buildRoute(editProfileScreen, const InspoEditProfileScreen()),
       _buildRoute(needHelpScreen, InspoNeedHelpScreen()),
       _buildRoute(pastCoverageScreen, const InspoPastCoverageScreen()),
+      _buildRoute(conceptEditProfileScreen, const InspoConceptEditProfileScreen()),
+      _buildRoute(conceptSignupScreen, const InspoConceptSignUpScreen()),
+      _buildRoute(conceptHomeMainScreen, const ConceptHomeMainScreen()),
+      _buildRoute(conceptViewAllReviewScreen, const ConceptViewAllReviewsScreen()),
+      _buildRoute(conceptRequestAcceptedScreen,  ConceptRequestAcceptedSreen()),
     ],
   );
 
