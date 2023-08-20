@@ -6,7 +6,10 @@ import '../inspo_button.dart';
 import '../inspo_review_circle.dart';
 
 class InspoConceptHomeReviewItemWidget extends StatelessWidget {
-  const InspoConceptHomeReviewItemWidget({Key? key}) : super(key: key);
+  InspoConceptHomeReviewItemWidget({Key? key, required this.onSliderChange, required this.sliderValue}) : super(key: key);
+
+  Function(double) onSliderChange = (double value) {};
+  double sliderValue = 0.5;
 
   @override
   Widget build(BuildContext context) {
@@ -79,31 +82,24 @@ class InspoConceptHomeReviewItemWidget extends StatelessWidget {
                 height: 10,
                 width: 169,
                 margin: EdgeInsets.only(top: 17),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: Colors.black,
-                      ),
+                child: SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    trackHeight: 2,
+                    thumbShape: const RoundSliderThumbShape(
+                      enabledThumbRadius: 5,
                     ),
-                    Container(
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
+                    thumbColor: Colors.black,
+                    activeTrackColor: AppTheme.blackColor.withOpacity(0.2),
+                  ),
+                  child: Slider(
+                    value: sliderValue,
+                    onChanged: (value) {
+                      onSliderChange(value);
+                    },
+                    inactiveColor: AppTheme.blackColor.withOpacity(0.2),
+                  ),
                 ),
+
               ),
             ],
           ),

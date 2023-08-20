@@ -7,12 +7,12 @@ import '../../config/app_theme.dart';
 import '../../utils/dimensions.dart';
 
 class InspoNotificationItem extends StatelessWidget {
-  const InspoNotificationItem({Key? key}) : super(key: key);
+  InspoNotificationItem({Key? key, required this.type}) : super(key: key);
+
+  String type;
 
   @override
   Widget build(BuildContext context) {
-    final random = Random();
-    final randomNumber = random.nextInt(2);
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -78,7 +78,7 @@ class InspoNotificationItem extends StatelessWidget {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
           const SizedBox(height: 14),
-          randomNumber > 0.5
+          type == "COVERED"
               ? Row(
                   children: [
                     Expanded(

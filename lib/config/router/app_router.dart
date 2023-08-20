@@ -111,7 +111,7 @@ class AppRouter {
     );
   }
 
-  // FUNCTION THAT HANDLES NAVIGATION
+// FUNCTION THAT HANDLES NAVIGATION
   static CustomTransitionPage _getPageRoute({
     required BuildContext context,
     required GoRouterState state,
@@ -121,8 +121,19 @@ class AppRouter {
     return CustomTransitionPage(
       key: state.pageKey,
       child: child,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-          FadeTransition(opacity: animation, child: child),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const beginOffset = Offset(1.0, 0.0); // Slide from right to left
+        const endOffset = Offset.zero;
+        var curve = Curves.easeInOut;
+
+        var tween = Tween(begin: beginOffset, end: endOffset).chain(
+          CurveTween(curve: curve),
+        );
+
+        var offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(position: offsetAnimation, child: child);
+      },
     );
   }
 

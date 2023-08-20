@@ -20,6 +20,9 @@ class ConceptHomeScreen extends StatefulWidget {
 }
 
 class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
+
+  double sliderValue = 0.5;
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<BottomNavBarProvider>(context);
@@ -150,9 +153,23 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
                       onPageChanged: (index) {
                         model.setCurrentPageIndex(index);
                       },
-                      children: const [
-                        InspoConceptHomeReviewItemWidget(),
-                        InspoConceptHomeReviewItemWidget(),
+                      children:  [
+                        InspoConceptHomeReviewItemWidget(
+                          onSliderChange: (value) {
+                            setState(() {
+                              sliderValue = value;
+                            });
+                          },
+                          sliderValue: sliderValue,
+                        ),
+                        InspoConceptHomeReviewItemWidget(
+                          onSliderChange: (value) {
+                            setState(() {
+                              sliderValue = value;
+                            });
+                          },
+                          sliderValue: sliderValue,
+                        ),
                       ],
                     ),
                   ),

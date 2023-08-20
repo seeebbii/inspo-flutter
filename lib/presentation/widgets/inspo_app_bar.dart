@@ -2,6 +2,9 @@ import 'package:clean_architecture_template/utils/extensions/context.extension.d
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import '../notifiers/bottomNavBar.notifier.dart';
 
 class InspoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -10,6 +13,8 @@ class InspoAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<BottomNavBarProvider>(context);
+    final selectedIndex = provider.selectedIndex;
     return AppBar(
       backgroundColor: Colors.white,
       surfaceTintColor: Colors.white,
@@ -29,7 +34,9 @@ class InspoAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            provider.selectIndex(1);
+          },
           icon: SvgPicture.asset(
             "assets/icons/event_appbar.svg",
           ),
@@ -41,7 +48,9 @@ class InspoAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            provider.selectIndex(2);
+          },
           icon: SvgPicture.asset(
             "assets/icons/account_appbar.svg",
           ),

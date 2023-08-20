@@ -89,8 +89,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     borderWidth: 1,
                     onPressed: () {
                       authenticationScreenVM.userType == 0 ?
-                      context.go("${AppRouter.homeMainScreen}") :
-                      context.go("${AppRouter.conceptHomeMainScreen}");
+                      context.go(AppRouter.homeMainScreen) :
+                      context.go(AppRouter.conceptHomeMainScreen);
                     },
                   ),
 

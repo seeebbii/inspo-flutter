@@ -179,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   textColor: Colors.white,
                   borderWidth: 1,
                   onPressed: () {
-                    context.push("${AppRouter.welcomeScreen}");
+                    context.push(AppRouter.welcomeScreen);
                   },
                 ),
                 const SizedBox(height: 25),

@@ -12,7 +12,21 @@ class InspoNotificationScreen extends StatefulWidget {
 
 class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
   final List<String> _filteredList = ["APPROVED", "DENIED", "COVERED"];
-  String _selectedFilter = "APPROVED";
+  String _selectedFilter = "";
+
+  final List<String> dataType = [
+    "APPROVED",
+    "DENIED",
+    "COVERED",
+    "APPROVED",
+    "DENIED",
+    "COVERED",
+    "APPROVED",
+    "DENIED",
+    "COVERED",
+    "APPROVED",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +61,10 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
                               : Colors.black,
                           onPressed: () {
                             setState(() {
+                              if (_selectedFilter == _filteredList[index]) {
+                                _selectedFilter = "";
+                                return;
+                              }
                               _selectedFilter = _filteredList[index];
                             });
                           },
@@ -64,9 +82,11 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
             const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                itemCount: 15,
+                itemCount: dataType.length,
                 itemBuilder: (context, index) {
-                  return const InspoNotificationItem();
+                  return _selectedFilter == dataType[index] || _selectedFilter == "" ? InspoNotificationItem(
+                    type: dataType[index],
+                  ) : const SizedBox.shrink();
                 },
               ),
             ),
