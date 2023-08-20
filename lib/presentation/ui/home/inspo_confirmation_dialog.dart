@@ -19,6 +19,7 @@ class _InspoConfirmationDialogState extends State<InspoConfirmationDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      insetPadding: EdgeInsets.symmetric(horizontal: 15),
       surfaceTintColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6.0),

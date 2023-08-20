@@ -18,22 +18,21 @@ class InspoConceptViewAllReviewItemWidget extends StatelessWidget {
             border: Border.all(width: 2),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 7,),
                 Row(
                   children: [
                     Image.asset("assets/images/avtar.png"),
-                    SizedBox(width: 7),
+                    SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "ISLAM MANSOORI",
                           style: Dimensions.customTextStyle(
-                            14,
+                            21,
                             FontWeight.w600,
                             Colors.black,
                           ),
@@ -41,40 +40,47 @@ class InspoConceptViewAllReviewItemWidget extends StatelessWidget {
                         Text(
                           "10hr",
                           style: Dimensions.customTextStyle(
-                            8,
+                            12,
                             FontWeight.w400,
                             AppTheme.blackColor,
                           ),
                         ),
                       ],
-                    ),
+                    )
                   ],
                 ),
-                SizedBox(height: 7),
+                SizedBox(height: 10),
                 Text(
                   "WANTS TO COVER YOUR CONCEPT",
                   style: Dimensions.customTextStyle(
-                    10,
+                    16,
                     FontWeight.w400,
                     AppTheme.blackColor,
                   ),
                 ),
-                SizedBox(height: 19),
+                SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(5, (index) {
-                    return InspoReviewCircle(
-                      width: 12,
-                      height: 12,
-                      borderWidth: 3,
-                    );
-                  }),
+                  children: [
+                    SizedBox(
+                      height: 20,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return InspoReviewCircle(
+                              width: 17, height: 17, borderWidth: 5);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 9), // Added spacing
                 Center(
                   child: Container(
                     height: 10,
                     width: 169,
+                    margin: EdgeInsets.only(top: 17),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -102,7 +108,6 @@ class InspoConceptViewAllReviewItemWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 13,)
               ],
             ),
           ),

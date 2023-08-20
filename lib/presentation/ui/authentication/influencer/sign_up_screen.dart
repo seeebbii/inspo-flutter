@@ -15,6 +15,7 @@ import '../../../view_models/authentication_VM.dart';
 import '../../../view_models/edit_profile_VM.dart';
 import '../../../widgets/app_simple_text_field.dart';
 import '../../../widgets/inspo_button.dart';
+import '../../home/inspo_confirmation_dialog.dart';
 
 
 class SignUpScreen extends StatelessWidget {
@@ -55,7 +56,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   AppSimpleTextField(
-                      title: "email",
+                      title: "Email",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -70,7 +71,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.emailAddress),
                   AppSimpleTextField(
-                      title: "password",
+                      title: "Password",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -85,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "confirm password",
+                      title: "Confirm Password",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       marginLeft: 23,
@@ -124,10 +125,12 @@ class SignUpScreen extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            FileHandler.pickImageFromGallery().then((value) {
-                              if (value == null) return;
-                              editProfileScreenVM.setProfilePhoto(value);
-                            });
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return pickImageDialog(editProfileScreenVM); // Your custom dialog widget
+                              },
+                            );
                           },
                           child: Container(
                             width: 85,
@@ -170,7 +173,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   AppSimpleTextField(
-                      title: "full name",
+                      title: "Full Name",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -184,7 +187,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "TELL US ABOUT YOUR SELF",
+                      title: "Tell Us About Your Self",
                       height: 106,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -198,7 +201,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "DATE OF BIRTH",
+                      title: "Date of Birth",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -211,7 +214,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "SOCIALS",
+                      title: "Socials",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -254,7 +257,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "PREFERRED TIMING",
+                      title: "Preferred Timing",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -269,7 +272,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "CONTACT",
+                      title: "Contact",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -283,7 +286,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       keyboard: TextInputType.text),
                   AppSimpleTextField(
-                      title: "ADDRESS",
+                      title: "Address",
                       height: 55,
                       width: MediaQuery.of(context).size.width,
                       borderWidth: 2,
@@ -303,7 +306,7 @@ class SignUpScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "UPLOAD FILE",
+                          "Upload File",
                           style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
@@ -353,7 +356,7 @@ class SignUpScreen extends StatelessWidget {
                     textColor: Colors.black,
                     borderWidth: 1,
                     onPressed: () {
-                      GoRouter.of(context).go(AppRouter.otpVerificationScreen);
+                      GoRouter.of(context).go(AppRouter.applicationUnderReviewScreen);
                     },
                   ),
                 ],
@@ -362,6 +365,71 @@ class SignUpScreen extends StatelessWidget {
           ],
         );
       }),
+    );
+  }
+  Widget pickImageDialog(EditProfileScreenVM editProfileScreenVM){
+    return Container(
+      child: Dialog(
+        surfaceTintColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.0),
+          side: const BorderSide(color: Colors.black, width: 4.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(13.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              GestureDetector(
+                onTap: (){
+                  FileHandler.pickImageFromGallery().then((value) {
+                    if (value == null) return;
+                    editProfileScreenVM.setProfilePhoto(value);
+                  });
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "TAKE A PHOTO ",
+                      style: Dimensions.customTextStyle(
+                        15,
+                        FontWeight.w600,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                    SvgPicture.asset("assets/icons/pick_camera.svg")
+                  ],
+                ),
+              ),
+             SizedBox(height: 6.0,),
+             GestureDetector(
+               onTap: (){
+                 FileHandler.pickImageFromGallery().then((value) {
+                   if (value == null) return;
+                   editProfileScreenVM.setProfilePhoto(value);
+                 });
+               },
+               child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "PHOTO LIBRARY ",
+                      style: Dimensions.customTextStyle(
+                        15,
+                        FontWeight.w600,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                    SvgPicture.asset("assets/icons/pick_library.svg")
+                  ],
+                ),
+             ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

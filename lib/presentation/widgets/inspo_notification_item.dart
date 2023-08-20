@@ -72,12 +72,12 @@ class InspoNotificationItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           const Text(
             "GOODCUP HAS ACCEPTED YOUR REQUEST SEE YOU @ 6:00 ",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 14),
           randomNumber > 0.5
               ? Row(
                   children: [

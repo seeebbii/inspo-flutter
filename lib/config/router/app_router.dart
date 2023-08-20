@@ -1,5 +1,6 @@
 import 'package:clean_architecture_template/config/router/custom_navigator_observer.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/application_under_eview_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/forgot_password_new_password_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/forgot_password_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/login_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
@@ -44,6 +45,7 @@ class AppRouter {
       '/application-under-review-screen';
   static const String conceptEditProfileScreen = '/concept-edit-profile-screen';
   static const String conceptSignupScreen = '/concept-signup-screen';
+  static const String forgotPasswordNewPasswordScreen = '/forgot-password-new-password-screen';
 
   // PROFILE SETUP ROUTE
   static const String createProfileScreen = '/create-profile-screen';
@@ -93,6 +95,7 @@ class AppRouter {
       _buildRoute(conceptHomeMainScreen, const ConceptHomeMainScreen()),
       _buildRoute(conceptViewAllReviewScreen, const ConceptViewAllReviewsScreen()),
       _buildRoute(conceptRequestAcceptedScreen,  ConceptRequestAcceptedSreen()),
+      _buildRoute(forgotPasswordNewPasswordScreen,  ForgotPasswordNewPasswordScreen()),
     ],
   );
 

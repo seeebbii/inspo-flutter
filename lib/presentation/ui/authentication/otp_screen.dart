@@ -112,7 +112,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   textColor: Colors.white,
                   borderWidth: 1,
                   onPressed: () {
-                    context.push(AppRouter.applicationUnderReviewScreen);
+                    context.push(AppRouter.forgotPasswordNewPasswordScreen);
                   },
                 ),
               ],

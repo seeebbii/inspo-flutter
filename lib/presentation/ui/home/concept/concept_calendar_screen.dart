@@ -1,4 +1,5 @@
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_calendar_request_item_widget.dart';
+import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_home_request_item_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -32,13 +33,11 @@ class ConceptCalendarScreen extends StatelessWidget {
                   return ListView.builder(
                       itemCount: 15,
                       itemBuilder: (context, index) {
-                        return InspoConceptCalendarRequestItemWidget(
-                          onRequestAccept: (){
-                            //model.setRequestAccepted(true);
-                          },
-                          onRequestDeny: (){
-                            //model.setRequestDenied(true);
-                          },
+                        return Column(
+                          children: [
+                            InspoConceptHomeRequestItemWidget(),
+                            SizedBox(height: 8,)
+                          ],
                         );
                       });
                 }),

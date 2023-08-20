@@ -366,7 +366,7 @@ class InspoConceptSignUpScreen extends StatelessWidget {
                     textColor: Colors.black,
                     borderWidth: 1,
                     onPressed: () {
-                      GoRouter.of(context).go(AppRouter.otpVerificationScreen);
+                      GoRouter.of(context).go(AppRouter.applicationUnderReviewScreen);
                     },
                   ),
                 ],

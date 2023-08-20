@@ -1,3 +1,4 @@
+import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_active_coverage_item_widget.dart';
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_home_review_item_widget.dart';
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_view_all_coverage_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,13 @@ class ConceptViewAllCoverageScreen extends StatelessWidget {
                           return ListView.builder(
                               itemCount: 15,
                               itemBuilder: (context, index) {
-                                return InspoConceptViewAllCoverageItemWidget();
+                                return Column(
+                                  children: [
+                                    InspoConceptActiveCoverageItemWidget(),
+                                    SizedBox(height: 8,)
+
+                                  ],
+                                );
                               });
                         }),
                   )

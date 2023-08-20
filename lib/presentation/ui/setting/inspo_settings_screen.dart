@@ -50,7 +50,7 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
               "GOT INSPO",
               style: Dimensions.customTextStyle(
                 32,
-                FontWeight.w700,
+                FontWeight.w600,
                 Colors.black,
               ),
             ),
@@ -97,7 +97,7 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
         ),
         InspoSettingsItem(name: "NOTIFICATIONS", switchVisible: true),
         InspoSettingsItem(name: "TUTORIAL", switchVisible: false),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         Column(
           children: [
             InspoButton(
