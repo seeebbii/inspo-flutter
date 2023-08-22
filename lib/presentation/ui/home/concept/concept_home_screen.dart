@@ -9,7 +9,10 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../config/app_theme.dart';
+import '../../../../utils/dimensions.dart';
 import '../../../notifiers/bottomNavBar.notifier.dart';
+import '../../../widgets/inspo_button.dart';
 import '../../../widgets/inspo_home_food_item.dart';
 
 class ConceptHomeScreen extends StatefulWidget {
@@ -20,7 +23,6 @@ class ConceptHomeScreen extends StatefulWidget {
 }
 
 class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
-
   double sliderValue = 0.5;
 
   @override
@@ -153,7 +155,7 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
                       onPageChanged: (index) {
                         model.setCurrentPageIndex(index);
                       },
-                      children:  [
+                      children: [
                         InspoConceptHomeReviewItemWidget(
                           onSliderChange: (value) {
                             setState(() {
