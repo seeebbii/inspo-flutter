@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../../config/router/app_router.dart';
 import '../../../utils/dimensions.dart';
+import '../../notifiers/bottomNavBar.notifier.dart';
 
 class InspoSettingsScreen extends StatefulWidget {
   const InspoSettingsScreen({Key? key}) : super(key: key);
@@ -23,6 +24,8 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
   Widget build(BuildContext context) {
     EditProfileScreenVM editProfileScreenVM =
         context.read<EditProfileScreenVM>();
+    final bottomNavBarProvider = Provider.of<BottomNavBarProvider>(context);
+
     return ListView(
       children: [
         Column(
@@ -93,6 +96,20 @@ class _InspoSettingsScreenState extends State<InspoSettingsScreen> {
           switchVisible: false,
           onTap: () {
             context.push(AppRouter.pastCoverageScreen);
+          },
+        ),
+        InspoSettingsItem(
+          name: "PAYMENT",
+          switchVisible: false,
+          onTap: () {
+            bottomNavBarProvider.selectIndex(3);
+          },
+        ),
+        InspoSettingsItem(
+          name: "INVOICES",
+          switchVisible: false,
+          onTap: () {
+            context.push(AppRouter.conceptInvoiceListScreen);
           },
         ),
         InspoSettingsItem(name: "NOTIFICATIONS", switchVisible: true),

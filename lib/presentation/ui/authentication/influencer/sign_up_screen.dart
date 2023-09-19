@@ -285,20 +285,37 @@ class SignUpScreen extends StatelessWidget {
                         print(value);
                       },
                       keyboard: TextInputType.text),
-                  AppSimpleTextField(
-                      title: "Address",
+                  Text(
+                    "Address",
+                    style: Dimensions.customTextStyle(
+                      16,
+                      FontWeight.w400,
+                      AppTheme.blackColor,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      context.push(AppRouter.inspoMapAddAddressScreen);
+                    },
+                    child: Container(
                       height: 55,
                       width: MediaQuery.of(context).size.width,
-                      borderWidth: 2,
-                      marginBottom: 15,
-                      borderRadius: 8,
-                      controller: model.addressController,
-                      fieldNameText: "",
-                      isName: true,
-                      onChange: (value) {
-                        print(value);
-                      },
-                      keyboard: TextInputType.text),
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 2, color: AppTheme.blackColor),
+                        borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: Center(
+                        child: Text(
+                          "ADD ADDRESS",
+                          style: Dimensions.customTextStyle(
+                            12,
+                            FontWeight.w700,
+                            AppTheme.blackColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),

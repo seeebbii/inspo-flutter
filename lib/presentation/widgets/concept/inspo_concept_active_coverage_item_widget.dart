@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../config/app_theme.dart';
 import '../../../utils/dimensions.dart';
 import '../inspo_button.dart';
+import '../re_schedule_bottom_sheet.dart';
 
 class InspoConceptActiveCoverageItemWidget extends StatelessWidget {
   const InspoConceptActiveCoverageItemWidget({Key? key}) : super(key: key);
@@ -106,13 +107,20 @@ class InspoConceptActiveCoverageItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       borderWidth: 1,
                       textColor: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ReScheduleBottomSheet();
+                          },
+                        );
+                      },
                     ),
                   ),
                   SizedBox(width: 14),
                   Expanded(
                     child: InspoButton(
-                      text: "CONTACT INFO",
+                      text: "ADDRESS",
                       width: 146,
                       height: 50,
                       marginTop: 5,
@@ -122,7 +130,9 @@ class InspoConceptActiveCoverageItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       borderWidth: 1,
                       textColor: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        showAccountDialog(context);
+                      },
                     ),
                   )
                 ],

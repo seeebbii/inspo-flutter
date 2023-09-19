@@ -22,6 +22,10 @@ class ConceptHomeScreenNotifier with ChangeNotifier {
 
   DateTime? _time;
 
+  bool _isDropDownExpanded = false;
+
+  String? _seletedLocation = null;
+
   bool get isRequestAccepted => _isRequestAccepted;
 
   bool get isRequestDenied => _isRequestDenied;
@@ -35,6 +39,10 @@ class ConceptHomeScreenNotifier with ChangeNotifier {
   DateTime? get date => _date;
 
   DateTime? get time => _time;
+
+  bool get isDropDownExpanded => _isDropDownExpanded;
+
+  String? get seletedLocation => _seletedLocation;
 
 
   PageController get pageController => _pageController;
@@ -76,6 +84,16 @@ class ConceptHomeScreenNotifier with ChangeNotifier {
 
   void setTime(DateTime time) {
     _time = time;
+    notifyListeners();
+  }
+
+  void setDropDownExpanded(bool value) {
+    _isDropDownExpanded = value;
+    notifyListeners();
+  }
+
+  void setSeletedLocation(String location) {
+    _seletedLocation = location;
     notifyListeners();
   }
 

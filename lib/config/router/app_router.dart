@@ -8,7 +8,10 @@ import 'package:clean_architecture_template/presentation/ui/home/concept/concept
 import 'package:clean_architecture_template/presentation/ui/home/concept/concept_home_main_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/concept/concept_request_accepted_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/concept/concept_view_all_reviews_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/invoice/invoice_list_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/setting/InspoNeedHelpScreen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/iban_info_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/inspo_payment_main_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/welcome/IspoHomeMainScreen.dart';
 import 'package:clean_architecture_template/presentation/ui/setting/edit_profile_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/inspo_home_screen.dart';
@@ -24,7 +27,10 @@ import 'package:path/path.dart';
 
 import '../../presentation/ui/authentication/concept/inspo_concept_sign_up_screen.dart';
 import '../../presentation/ui/authentication/influencer/sign_up_screen.dart';
+import '../../presentation/ui/authentication/inspo_add_address_screen.dart';
+import '../../presentation/ui/authentication/inspo_map_add_address_screen.dart';
 import '../../presentation/ui/setting/inspo_settings_screen.dart';
+import '../../presentation/ui/setting/invoice_details_screen.dart';
 
 class AppRouter {
   // WELCOME ROUTE
@@ -68,6 +74,12 @@ class AppRouter {
   static const String conceptHomeMainScreen = '/concept-home-main-screen';
   static const String conceptViewAllReviewScreen = '/concept-view-all-review-screen';
   static const String conceptRequestAcceptedScreen = '/concept-request-accepted-screen';
+  static const String conceptInvoiceListScreen = '/concept-invoice-list-screen';
+  static const String invoiceDetailsScreen = '/concept-invoice-details-screen';
+  static const String paymentMainScreen = '/concept-payment-main-screen';
+  static const String ibanInfoScreen = '/iban-info-screen';
+  static const String inspoMapAddAddressScreen = '/map-add-address-screen';
+  static const String inspoAddAddressScreen = '/add-address-screen';
 
   static final GoRouter router = GoRouter(
     observers: [CustomNavigatorObserver()],
@@ -96,6 +108,12 @@ class AppRouter {
       _buildRoute(conceptViewAllReviewScreen, const ConceptViewAllReviewsScreen()),
       _buildRoute(conceptRequestAcceptedScreen,  ConceptRequestAcceptedSreen()),
       _buildRoute(forgotPasswordNewPasswordScreen,  ForgotPasswordNewPasswordScreen()),
+      _buildRoute(conceptInvoiceListScreen,  InspoInvoiceListScreen()),
+      _buildRoute(invoiceDetailsScreen,  InvoiceDetailsScreen()),
+      _buildRoute(paymentMainScreen,  InspoPaymentMainScreen()),
+      _buildRoute(ibanInfoScreen,  IBANInfoScreen()),
+      _buildRoute(inspoMapAddAddressScreen,  InspoMapAddAddressScreen()),
+      _buildRoute(inspoAddAddressScreen,  InspoAddAddressScreen()),
     ],
   );
 

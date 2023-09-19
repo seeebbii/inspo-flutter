@@ -27,93 +27,80 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       appBar: const InspoAppBar(),
       body: ListView(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            margin: const EdgeInsets.only(top: 20),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: Colors.black,
-                width: 3,
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Align(
-                  //   alignment: Alignment.topRight,
-                  //   child: Container(
-                  //     margin: EdgeInsets.only(top: 18, right: 18),
-                  //     width: 33,
-                  //     height: 33,
-                  //     child: IconButton(
-                  //       onPressed: () {},
-                  //       icon: Icon(
-                  //         Icons.close,
-                  //         color: Colors.black,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  Text(
-                    "WELCOME TO THE APP",
-                    style: Dimensions.customTextStyle(
-                      24,
-                      FontWeight.w700,
-                      Colors.black,
-                    ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Align(
+                //   alignment: Alignment.topRight,
+                //   child: Container(
+                //     margin: EdgeInsets.only(top: 18, right: 18),
+                //     width: 33,
+                //     height: 33,
+                //     child: IconButton(
+                //       onPressed: () {},
+                //       icon: Icon(
+                //         Icons.close,
+                //         color: Colors.black,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Text(
+                  "WELCOME TO THE APP",
+                  style: Dimensions.customTextStyle(
+                    24,
+                    FontWeight.w700,
+                    Colors.black,
                   ),
-                  Text(
-                    "HELOOO, AS YOU SEE YOUR ON THIS ONE OF ONE PLATFORM SPECIALLY DESIGNED WITH YOU IN MIND , ENGINEERED TO BRIDGE THE GAP BETWEEN YOU AND CONCEPTS EXPLORE AND COVER IT ALL.",
-                    style: Dimensions.customTextStyle(
-                      16,
-                      FontWeight.w400,
-                      Colors.black,
-                    ),
+                ),
+                Text(
+                  "HELOOO, AS YOU SEE YOUR ON THIS ONE OF ONE PLATFORM SPECIALLY DESIGNED WITH YOU IN MIND , ENGINEERED TO BRIDGE THE GAP BETWEEN YOU AND CONCEPTS EXPLORE AND COVER IT ALL.",
+                  style: Dimensions.customTextStyle(
+                    16,
+                    FontWeight.w400,
+                    Colors.black,
                   ),
-                  InspoButton(
-                    text: "ENTER!!",
-                    width: 110,
-                    height: 36,
-                    marginTop: 25,
-                    marginBottom: 75,
-                    buttonColor: Colors.white,
-                    buttonRadius: 8,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    textColor: Colors.black,
-                    borderWidth: 1,
-                    onPressed: () {
-                      authenticationScreenVM.userType == 0 ?
-                      context.go(AppRouter.homeMainScreen) :
-                      context.go(AppRouter.conceptHomeMainScreen);
-                    },
-                  ),
+                ),
+                InspoButton(
+                  text: "ENTER!!",
+                  width: 110,
+                  height: 36,
+                  marginTop: 25,
+                  marginBottom: 75,
+                  buttonColor: Colors.white,
+                  buttonRadius: 8,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  textColor: Colors.black,
+                  borderWidth: 1,
+                  onPressed: () {
+                    authenticationScreenVM.userType == 0 ?
+                    context.go(AppRouter.homeMainScreen) :
+                    context.go(AppRouter.conceptHomeMainScreen);
+                  },
+                ),
 
-                  Text(
-                    "FOLLOW OUR SOCIALS ",
-                    style: Dimensions.customTextStyle(
-                      24,
-                      FontWeight.w700,
-                      Colors.black,
-                    ),
+                Text(
+                  "FOLLOW OUR SOCIALS ",
+                  style: Dimensions.customTextStyle(
+                    24,
+                    FontWeight.w700,
+                    Colors.black,
                   ),
-                  Text(
-                    "YK THE VIBES FOLLOW US ON THE DAGRAM AND THE OTHER SOCIALS",
-                    style: Dimensions.customTextStyle(
-                      16,
-                      FontWeight.w400,
-                      Colors.black,
-                    ),
+                ),
+                Text(
+                  "YK THE VIBES FOLLOW US ON THE DAGRAM AND THE OTHER SOCIALS",
+                  style: Dimensions.customTextStyle(
+                    16,
+                    FontWeight.w400,
+                    Colors.black,
                   ),
-                  const SizedBox(height: 25),
-                  Image.asset("assets/images/image_placeholder_wide.png")
-                ],
-              ),
+                ),
+                const SizedBox(height: 25),
+                Image.asset("assets/images/image_placeholder_wide.png")
+              ],
             ),
           ),
         ],

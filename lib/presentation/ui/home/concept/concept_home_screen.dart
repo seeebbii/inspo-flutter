@@ -3,6 +3,7 @@ import 'package:clean_architecture_template/presentation/notifiers/conceptHomeSc
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_active_coverage_item_widget.dart';
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_home_request_item_widget.dart';
 import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_home_review_item_widget.dart';
+import 'package:clean_architecture_template/presentation/widgets/concept/inspo_concept_payment_due_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -62,7 +63,7 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
             const SizedBox(height: 10),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: 210,
+              height: 190,
               child: Row(
                 children: [
                   SizedBox(
@@ -135,8 +136,8 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            SizedBox(
-              height: 172,
+            Container(
+              height: model.currentPageIndex == 0 ? 375 : 210,
               child: Row(
                 children: [
                   SizedBox(
@@ -163,6 +164,7 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
                             });
                           },
                           sliderValue: sliderValue,
+                          reviewStatus: "cc",
                         ),
                         InspoConceptHomeReviewItemWidget(
                           onSliderChange: (value) {
@@ -171,6 +173,7 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
                             });
                           },
                           sliderValue: sliderValue,
+                          reviewStatus: "ci",
                         ),
                       ],
                     ),
@@ -215,7 +218,82 @@ class _ConceptHomeScreenState extends State<ConceptHomeScreen> {
               padding: EdgeInsets.symmetric(horizontal: 19.0),
               child: InspoConceptActiveCoverageItemWidget(),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                const SizedBox(width: 19),
+                GestureDetector(
+                  onTap: () {
+                    provider.selectIndex(4);
+                  },
+                  child: const Text("PAYMENTS DUE",
+                      style: TextStyle(
+                          fontFamily: "assets/fonts/Halvetica.ttf",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16)),
+                ),
+                SizedBox(
+                  width: 20,
+                  height: 25,
+                  child: IconButton(
+                    icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 190,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                    height: 25,
+                    child: IconButton(
+                      icon: SvgPicture.asset("assets/icons/ic_arrow_left.svg"),
+                      onPressed: () {
+                        if (model.currentPageIndex > 0) {
+                          model.pageController.previousPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: PageView(
+                      controller: model.pageController,
+                      onPageChanged: (index) {
+                        model.setCurrentPageIndex(index);
+                      },
+                      children: const [
+                        InspoConceptPaymentDueWidget(),
+                        InspoConceptPaymentDueWidget(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                    height: 25,
+                    child: IconButton(
+                      icon: SvgPicture.asset("assets/icons/ic_arrow_right.svg"),
+                      onPressed: () {
+                        if (model.currentPageIndex < 2) {
+                          model.pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 14),
           ],
         );
       }),

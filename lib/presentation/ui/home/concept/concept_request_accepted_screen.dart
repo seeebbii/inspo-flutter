@@ -11,10 +11,15 @@ import '../../../notifiers/bottomNavBar.notifier.dart';
 import '../../../notifiers/conceptHomeScreen.notifier.dart';
 import '../../../widgets/app_simple_text_field.dart';
 import '../../../widgets/inspo_button.dart';
+import '../../../widgets/inspo_custom_drop_down.dart';
 
 class ConceptRequestAcceptedSreen extends StatelessWidget {
   final List<bool> _checkBoxValues = List.generate(8, (index) => false);
   final TextEditingController _locationController = TextEditingController();
+  final List<String> _location = [
+    "GOODCUP > ARDIYA",
+    "GOODCUP > CITY"
+  ];
 
   ConceptRequestAcceptedSreen({Key? key}) : super(key: key);
 
@@ -304,7 +309,91 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                       },
                                     ),
                                   ),
-                                  const SizedBox(height: 12.3),
+                                  const SizedBox(height: 19.3),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "DESCRIBE COVERAGE",
+                                        style: Dimensions.customTextStyle(
+                                          18,
+                                          FontWeight.w600,
+                                          Colors.black,
+                                        ),
+                                      ),
+                                      Text(
+                                        "0/400 character",
+                                        style: Dimensions.customTextStyle(
+                                          8,
+                                          FontWeight.w400,
+                                          AppTheme.blackColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 3),
+                                  AppSimpleTextField(
+                                      height: 97,
+                                      width: MediaQuery.of(context)
+                                          .size
+                                          .width,
+                                      isEmail: true,
+                                      hintText: "400 character limit",
+                                      controller: _locationController,
+                                      marginTop: 5,
+                                      fieldNameText: "",
+                                      borderWidth: 1,
+                                      borderRadius: 6,
+                                      hasBorders: true,
+                                      onChange: (value) {
+                                        print(value);
+                                      },
+                                      keyboard:
+                                      TextInputType.emailAddress),
+                                  SizedBox(height: 16),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "BOOSTER",
+                                        style: Dimensions.customTextStyle(
+                                          18,
+                                          FontWeight.w600,
+                                          Colors.black,
+                                        ),
+                                      ),
+                                      Text(
+                                        "OPTIONAL",
+                                        style: Dimensions.customTextStyle(
+                                          8,
+                                          FontWeight.w600,
+                                          AppTheme.blackColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 3),
+                                  Container(
+                                    height: 55,
+                                    width: MediaQuery.of(context)
+                                        .size
+                                        .width,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                        BorderRadius.circular(6),
+                                        border: Border.all(width: 1)),
+                                    child: Center(
+                                      child:Text(
+                                        "10 KD",
+                                        style: Dimensions.customTextStyle(
+                                          18,
+                                          FontWeight.w600,
+                                          AppTheme.blackColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 15,),
                                   Text(
                                     "SET ITEM TYPE",
                                     style: Dimensions.customTextStyle(
@@ -376,24 +465,84 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                               Colors.black,
                                             ),
                                           ),
-                                          AppSimpleTextField(
-                                              height: 55,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              isEmail: true,
-                                              hintText: "GOTINSPO@EMAIL.COM",
-                                              controller: _locationController,
-                                              marginTop: 5,
-                                              fieldNameText: "",
-                                              borderWidth: 1,
-                                              borderRadius: 6,
-                                              hasBorders: true,
-                                              onChange: (value) {
-                                                print(value);
-                                              },
-                                              keyboard:
-                                                  TextInputType.emailAddress),
+                                         Container(
+                                           height:  model.isDropDownExpanded ? 130 : 50,
+                                           decoration: BoxDecoration(
+                                             border: model.isDropDownExpanded ? Border.all(width: 2,color: Colors.black) : null,
+                                             borderRadius: BorderRadius.only(topLeft: Radius.circular(6.0),topRight: Radius.circular(6.0)),
+                                           ),
+                                           child: Column(
+                                             children: [
+                                               GestureDetector(
+                                                 onTap: (){
+                                                   model.setDropDownExpanded(!model.isDropDownExpanded);
+                                                 },
+                                                 child: Container(
+                                                   width: MediaQuery.of(context).size.width,
+                                                   height: 45,
+                                                   decoration: BoxDecoration(
+                                                     border: model.isDropDownExpanded ? null : Border.all(width: 1,color: Colors.black),
+                                                     borderRadius: model.isDropDownExpanded ? null :  BorderRadius.circular(6.0),
+                                                   ),
+                                                   child: Center(
+                                                     child: Text(
+                                                       model.seletedLocation == null ? "PICK YOUR BRANCH" : model.seletedLocation!,
+                                                       style: Dimensions.customTextStyle(
+                                                         13,
+                                                         FontWeight.w600,
+                                                         AppTheme.blackColor,
+                                                       ),
+                                                     ),
+                                                   ),
+                                                 ),
+                                               ),
+                                               Visibility(
+                                                 visible: model.isDropDownExpanded ? true : false,
+                                                 child: Expanded(
+                                                   child: ListView.builder(
+                                                       itemCount: _location.length,
+                                                       itemBuilder: (context,index){
+                                                         return GestureDetector(
+                                                           onTap: (){
+                                                             model.setSeletedLocation(_location[index]);
+                                                             model.setDropDownExpanded(false);
+                                                           },
+                                                           child: Container(
+                                                             decoration: BoxDecoration(
+                                                               border: Border.all(width: 1,color: Colors.black),
+                                                               borderRadius: BorderRadius.circular(0.0),
+                                                             ),
+                                                             child: Center(
+                                                               child: Padding(
+                                                                 padding: const EdgeInsets.symmetric(vertical: 11.0),
+                                                                 child: Text(
+                                                                   _location[index],
+                                                                   style: Dimensions.customTextStyle(
+                                                                     16,
+                                                                     FontWeight.w400,
+                                                                     AppTheme.blackColor,
+                                                                   ),
+                                                                 ),
+                                                               ),
+                                                             ),
+                                                           ),
+                                                         );
+                                                       }
+                                                   ),
+                                                 ),
+                                               )
+                                             ],
+                                           ),
+                                         ),
+                                         /* InspoCustomDropdown<String>(
+                                            items: ["GOODCUP > ARDIYA", "GOODCUP > CITY"],
+                                            selectedValue: selectedValue,
+                                            onChanged: (value) {
+                                              *//*setState(() {
+                                                selectedValue = value;
+                                              });*//*
+                                            },
+                                          ),*/
                                         ],
                                       )),
                                   const SizedBox(height: 25.0),

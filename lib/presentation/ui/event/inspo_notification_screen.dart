@@ -2,6 +2,8 @@ import 'package:clean_architecture_template/presentation/widgets/inspo_button.da
 import 'package:clean_architecture_template/presentation/widgets/inspo_notification_item.dart';
 import 'package:flutter/material.dart';
 
+import '../home/inspo_confirmation_dialog.dart';
+
 class InspoNotificationScreen extends StatefulWidget {
   const InspoNotificationScreen({Key? key}) : super(key: key);
 
@@ -15,6 +17,7 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
   String _selectedFilter = "";
 
   final List<String> dataType = [
+    "UPCOMING"
     "APPROVED",
     "DENIED",
     "COVERED",
@@ -25,7 +28,10 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
     "DENIED",
     "COVERED",
     "APPROVED",
+    "THANKYOU"
   ];
+
+   String requestStatus = "none";
 
   @override
   Widget build(BuildContext context) {
@@ -80,19 +86,86 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            Expanded(
+            requestStatus == "none" ? Expanded(
               child: ListView.builder(
                 itemCount: dataType.length,
                 itemBuilder: (context, index) {
                   return _selectedFilter == dataType[index] || _selectedFilter == "" ? InspoNotificationItem(
                     type: dataType[index],
+                    onAcceptRequirementsTap: (){
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return InspoConfirmationDialog(
+                            onYesButtonTap: (){
+                              setState(() {
+                                dataType[index] = "UPCOMING";
+                              });
+                            },
+                          ); // Your custom dialog widget
+                        },
+                      );
+                    },
+                    onRequirementsTap: (){
+                      setState(() {
+                        requestStatus = "req";
+                      });
+                    },
+                    onCoveredTap: (){
+
+                    },
                   ) : const SizedBox.shrink();
                 },
               ),
-            ),
+            ) : requestStatus == "req" ? 
+            Expanded(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InspoNotificationItem(
+                      type: 'COVERED',
+                      onAcceptRequirementsTap: () {
+
+                      },
+                      onRequirementsTap: () {
+
+                    },
+                      onCoveredTap: (){
+                        setState(() {
+                          requestStatus = "thankyou";
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ) : requestStatus == "thankyou" ?
+            Expanded(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InspoNotificationItem(
+                      type: 'THANKYOU',
+                      onAcceptRequirementsTap: () {
+
+                      },
+                      onRequirementsTap: () {
+
+                    },
+                      onCoveredTap: (){
+
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ) : SizedBox.shrink(),
           ],
         ),
       ),
     );
   }
 }
+

@@ -3,9 +3,11 @@ import 'package:clean_architecture_template/presentation/widgets/inspo_settings_
 import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../config/router/app_router.dart';
 import '../../../../utils/dimensions.dart';
+import '../../../notifiers/bottomNavBar.notifier.dart';
 
 class InspoConceptSettingsScreen extends StatefulWidget {
   const InspoConceptSettingsScreen({Key? key}) : super(key: key);
@@ -72,10 +74,10 @@ class _InspoConceptSettingsScreenState
           },
         ),
         InspoSettingsItem(
-          name: "SECRET",
+          name: "INVOICES",
           switchVisible: false,
           onTap: () {
-            context.push(AppRouter.pastCoverageScreen);
+            context.push(AppRouter.invoiceDetailsScreen);
           },
         ),
         InspoSettingsItem(name: "NOTIFICATIONS", switchVisible: true),

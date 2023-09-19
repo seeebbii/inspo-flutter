@@ -26,7 +26,11 @@ class _InspoHomeScreenState extends State<InspoHomeScreen> {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return InspoConfirmationDialog(); // Your custom dialog widget
+                        return InspoConfirmationDialog(
+                          onYesButtonTap: (){
+
+                          },
+                        ); // Your custom dialog widget
                       },
                     );
                   },

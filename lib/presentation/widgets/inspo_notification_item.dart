@@ -7,9 +7,12 @@ import '../../config/app_theme.dart';
 import '../../utils/dimensions.dart';
 
 class InspoNotificationItem extends StatelessWidget {
-  InspoNotificationItem({Key? key, required this.type}) : super(key: key);
+  InspoNotificationItem({Key? key, required this.type,required this.onAcceptRequirementsTap,required this.onRequirementsTap,required this.onCoveredTap}) : super(key: key);
 
   String type;
+  VoidCallback onAcceptRequirementsTap;
+  VoidCallback onRequirementsTap;
+  VoidCallback onCoveredTap;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +52,15 @@ class InspoNotificationItem extends StatelessWidget {
                         const SizedBox(width: 5),
                         const Icon(Icons.arrow_forward_ios, size: 15),
                         const SizedBox(width: 5),
-                        Text(
-                          "Requirements",
-                          style: Dimensions.customTextStyle(
-                            11,
-                            FontWeight.w600,
-                            Colors.black,
+                        GestureDetector(
+                          onTap: type == "APPROVED" ? onAcceptRequirementsTap : onRequirementsTap,
+                          child: Text(
+                            type == "APPROVED" ? "Accept Requirements" : "Requirements",
+                            style: Dimensions.customTextStyle(
+                              11,
+                              FontWeight.w600,
+                              Colors.black,
+                            ),
                           ),
                         )
                       ],
@@ -73,10 +79,104 @@ class InspoNotificationItem extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          const Text(
-            "GOODCUP HAS ACCEPTED YOUR REQUEST SEE YOU @ 6:00 ",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
+          type == "THANKYOU" ?
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              "THANK YOUUUUUU!!!",
+              style: Dimensions.customTextStyle(
+                16,
+                FontWeight.w400,
+                AppTheme.blackColor,
+              ),
+            )
+          ) :
+          type == "UPCOMING" ?
+          Align(
+            alignment: Alignment.topLeft,
+            child: RichText(
+              text: TextSpan(
+                  text: 'UPCOMING COVERAGE ON ',
+                  style: Dimensions.customTextStyle(
+                    16,
+                    FontWeight.w500,
+                    AppTheme.blackColor,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'JAN 29',
+                      style: Dimensions.customTextStyle(
+                        16,
+                        FontWeight.w700,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                  ]),
+            ),
+          ) :
+          type == "APPROVED" ?
+          RichText(
+            text: TextSpan(
+                text: 'GOODCUP HAS ',
+                style: Dimensions.customTextStyle(
+                  16,
+                  FontWeight.w500,
+                  AppTheme.blackColor,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'ACCEPTED YOUR REQUEST ',
+                    style: Dimensions.customTextStyle(
+                      16,
+                      FontWeight.w700,
+                      AppTheme.blackColor,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'SEE YOU @ 6:00 ',
+                    style: Dimensions.customTextStyle(
+                      16,
+                      FontWeight.w500,
+                      AppTheme.blackColor,
+                    ),
+                  ),
+                ]),
+          ) : type == "DENIED" ?
+          Align(
+            alignment: Alignment.topLeft,
+            child: RichText(
+              text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: ' DENIED YOUR REQUEST',
+                      style: Dimensions.customTextStyle(
+                        16,
+                        FontWeight.w700,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' TO COVER ;/ ',
+                      style: Dimensions.customTextStyle(
+                        16,
+                        FontWeight.w500,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                  ]),
+            ),
+          ) : type == "COVERED" ?
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              "HAVE YOU COVERED IT",
+              style: Dimensions.customTextStyle(
+                16,
+                FontWeight.w400,
+                AppTheme.blackColor,
+              ),
+            ),
+          ) : SizedBox.shrink(),
           const SizedBox(height: 14),
           type == "COVERED"
               ? Row(
@@ -91,7 +191,7 @@ class InspoNotificationItem extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         textColor: Colors.white,
                         borderWidth: 2,
-                        onPressed: () {},
+                        onPressed: onCoveredTap,
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -110,8 +210,19 @@ class InspoNotificationItem extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
-              : const SizedBox.shrink()
+                ) : SizedBox.shrink()
+              // : type == "APPROVED" ? InspoButton(
+              //   text: "NOT YET",
+              //   height: 63,
+              //   marginRight: 12,
+              //   buttonColor: Colors.white,
+              //   buttonRadius: 9,
+              //   fontSize: 14,
+              //   fontWeight: FontWeight.w600,
+              //   textColor: Colors.black,
+              //   borderWidth: 2,
+              //   onPressed: () {},
+              // )
         ],
       ),
     );

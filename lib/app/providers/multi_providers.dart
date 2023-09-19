@@ -1,6 +1,7 @@
 import 'package:clean_architecture_template/config/locator.dart';
 import 'package:clean_architecture_template/presentation/notifiers/authentication.notifier.dart';
 import 'package:clean_architecture_template/presentation/notifiers/bottomNavBar.notifier.dart';
+import 'package:clean_architecture_template/presentation/notifiers/conceptHomeMainScreen.notifier.dart';
 import 'package:clean_architecture_template/presentation/notifiers/conceptHomeScreen.notifier.dart';
 import 'package:clean_architecture_template/presentation/notifiers/connection.notifier.dart';
 import 'package:clean_architecture_template/presentation/view_models/authentication_VM.dart';
@@ -11,7 +12,9 @@ import 'package:clean_architecture_template/presentation/widgets/concept/inspo_c
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../presentation/notifiers/addAddressScreen.notifier.dart';
 import '../../presentation/notifiers/conceptCalendarScreen.notifier.dart';
+import '../../presentation/notifiers/ibanScreenPageView.notifier.dart';
 
 
 class MultiProviders extends StatelessWidget {
@@ -52,6 +55,15 @@ class MultiProviders extends StatelessWidget {
 
         ChangeNotifierProvider<ConceptEditProfileScreenVM>(
           create: (BuildContext context) => ConceptEditProfileScreenVM(),
+        ),
+        ChangeNotifierProvider<IBANPageViewProvider>(
+          create: (BuildContext context) => IBANPageViewProvider(),
+        ),
+        ChangeNotifierProvider<ConceptHomeMainScreenProvider>(
+          create: (BuildContext context) => ConceptHomeMainScreenProvider(),
+        ),
+        ChangeNotifierProvider<AddAddressScreenNotifier>(
+          create: (BuildContext context) => AddAddressScreenNotifier(),
         ),
       ],
       child: child,

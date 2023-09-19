@@ -311,6 +311,38 @@ class InspoConceptSignUpScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 5),
+                  Text(
+                    "Address",
+                    style: Dimensions.customTextStyle(
+                      16,
+                      FontWeight.w400,
+                      AppTheme.blackColor,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      context.push(AppRouter.inspoMapAddAddressScreen);
+                    },
+                    child: Container(
+                      height: 55,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: AppTheme.blackColor),
+                          borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: Center(
+                        child: Text(
+                          "ADD ADDRESS",
+                          style: Dimensions.customTextStyle(
+                            12,
+                            FontWeight.w700,
+                            AppTheme.blackColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 5),
                   AppSimpleTextField(
                       title: "CONTACT",
                       height: 55,
