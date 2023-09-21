@@ -19,43 +19,41 @@ class InspoSettingsItem extends StatefulWidget {
 class _InspoSettingsItemState extends State<InspoSettingsItem> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-          height: 45,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(9),
-            border: Border.all(width: 2),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  widget.name,
-                  style: Dimensions.customTextStyle(
-                    16,
-                    FontWeight.w700,
-                    Colors.black,
-                  ),
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        height: 45,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(9),
+          border: Border.all(width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                widget.name,
+                style: Dimensions.customTextStyle(
+                  16,
+                  FontWeight.w700,
+                  Colors.black,
                 ),
               ),
-              Visibility(
-                visible: widget.switchVisible,
-                child: InspoSwitch(
-                  switchValue: widget.switchValue,
-                  onTap: (value) {
-                    setState(() {
-                      widget.switchValue = value;
-                    });
-                  },
-                ),
+            ),
+            Visibility(
+              visible: widget.switchVisible,
+              child: InspoSwitch(
+                switchValue: widget.switchValue,
+                onTap: (value) {
+                  setState(() {
+                    widget.switchValue = value;
+                  });
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

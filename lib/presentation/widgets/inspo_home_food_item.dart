@@ -22,7 +22,7 @@ class InspoHomeFoodItem extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             width: 110,
             decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.black),
+              border: Border.all(width: 2, color: Colors.black),
             ),
             child: Image.asset("assets/images/sample.png"),
           ),
@@ -82,42 +82,43 @@ class InspoHomeFoodItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return const InspoReviewCircle();
-                          },
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 7.5),
-                        child: Text(
-                          "5.0 . 219 Reviews",
-                          style: Dimensions.customTextStyle(
-                            6,
-                            FontWeight.w400,
-                            Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // Expanded(
+                //   child: Row(
+                //     children: [
+                //       SizedBox(
+                //         height: 20,
+                //         child: ListView.builder(
+                //           scrollDirection: Axis.horizontal,
+                //           shrinkWrap: true,
+                //           itemCount: 5,
+                //           itemBuilder: (context, index) {
+                //             return InspoReviewCircle(width: 10,height: 10,borderWidth: 3);
+                //           },
+                //         ),
+                //       ),
+                //       Container(
+                //         margin: const EdgeInsets.only(left: 7.5),
+                //         child: Text(
+                //           "5.0 . 219 Reviews",
+                //           style: Dimensions.customTextStyle(
+                //             6,
+                //             FontWeight.w400,
+                //             Colors.black,
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 const SizedBox(height: 5),
                 Text(
                   "WITH CHEESE AND SMASHED MEAT",
                   style: Dimensions.customTextStyle(
-                    12,
+                    9,
                     FontWeight.w400,
                     Colors.black,
                   ),
+                  maxLines: 3,
                 ),
               ],
             ),

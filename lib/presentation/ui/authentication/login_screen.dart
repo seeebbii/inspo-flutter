@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppSimpleTextField(
-                        title: "email",
+                        title: "Email",
                         height: 55,
                         width: MediaQuery.of(context).size.width,
                         borderWidth: 2,
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboard: TextInputType.emailAddress,
                       ),
                       AppSimpleTextField(
-                          title: "password",
+                          title: "Password",
                           height: 55,
                           width: MediaQuery.of(context).size.width,
                           borderWidth: 2,
@@ -193,7 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      context.push(AppRouter.signupScreen);
+                      authenticationScreenVM.userType == 0 ?
+                      context.push(AppRouter.signupScreen) :
+                      context.push(AppRouter.conceptSignupScreen);
                     },
                     child: Text(
                       "SIGN UP HERE.",

@@ -1,10 +1,17 @@
 import 'package:clean_architecture_template/config/router/custom_navigator_observer.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/application_under_eview_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/authentication/forgot_password_new_password_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/forgot_password_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/login_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/authentication/otp_screen.dart';
-import 'package:clean_architecture_template/presentation/ui/authentication/sign_up_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_edit_profile_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_home_main_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_request_accepted_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/home/concept/concept_view_all_reviews_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/invoice/invoice_list_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/setting/InspoNeedHelpScreen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/iban_info_screen.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/inspo_payment_main_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/welcome/IspoHomeMainScreen.dart';
 import 'package:clean_architecture_template/presentation/ui/setting/edit_profile_screen.dart';
 import 'package:clean_architecture_template/presentation/ui/home/inspo_home_screen.dart';
@@ -18,7 +25,12 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path/path.dart';
 
+import '../../presentation/ui/authentication/concept/inspo_concept_sign_up_screen.dart';
+import '../../presentation/ui/authentication/influencer/sign_up_screen.dart';
+import '../../presentation/ui/authentication/inspo_add_address_screen.dart';
+import '../../presentation/ui/authentication/inspo_map_add_address_screen.dart';
 import '../../presentation/ui/setting/inspo_settings_screen.dart';
+import '../../presentation/ui/setting/invoice_details_screen.dart';
 
 class AppRouter {
   // WELCOME ROUTE
@@ -37,6 +49,9 @@ class AppRouter {
   static const String signupScreen = '/signup-screen';
   static const String applicationUnderReviewScreen =
       '/application-under-review-screen';
+  static const String conceptEditProfileScreen = '/concept-edit-profile-screen';
+  static const String conceptSignupScreen = '/concept-signup-screen';
+  static const String forgotPasswordNewPasswordScreen = '/forgot-password-new-password-screen';
 
   // PROFILE SETUP ROUTE
   static const String createProfileScreen = '/create-profile-screen';
@@ -56,6 +71,15 @@ class AppRouter {
   static const String editProfileScreen = '/edit-profile-screen';
   static const String needHelpScreen = '/need-help-screen';
   static const String pastCoverageScreen = '/past-coverage-screen';
+  static const String conceptHomeMainScreen = '/concept-home-main-screen';
+  static const String conceptViewAllReviewScreen = '/concept-view-all-review-screen';
+  static const String conceptRequestAcceptedScreen = '/concept-request-accepted-screen';
+  static const String conceptInvoiceListScreen = '/concept-invoice-list-screen';
+  static const String invoiceDetailsScreen = '/concept-invoice-details-screen';
+  static const String paymentMainScreen = '/concept-payment-main-screen';
+  static const String ibanInfoScreen = '/iban-info-screen';
+  static const String inspoMapAddAddressScreen = '/map-add-address-screen';
+  static const String inspoAddAddressScreen = '/add-address-screen';
 
   static final GoRouter router = GoRouter(
     observers: [CustomNavigatorObserver()],
@@ -78,6 +102,18 @@ class AppRouter {
       _buildRoute(editProfileScreen, const InspoEditProfileScreen()),
       _buildRoute(needHelpScreen, InspoNeedHelpScreen()),
       _buildRoute(pastCoverageScreen, const InspoPastCoverageScreen()),
+      _buildRoute(conceptEditProfileScreen, const InspoConceptEditProfileScreen()),
+      _buildRoute(conceptSignupScreen, const InspoConceptSignUpScreen()),
+      _buildRoute(conceptHomeMainScreen, const ConceptHomeMainScreen()),
+      _buildRoute(conceptViewAllReviewScreen, const ConceptViewAllReviewsScreen()),
+      _buildRoute(conceptRequestAcceptedScreen,  ConceptRequestAcceptedSreen()),
+      _buildRoute(forgotPasswordNewPasswordScreen,  ForgotPasswordNewPasswordScreen()),
+      _buildRoute(conceptInvoiceListScreen,  InspoInvoiceListScreen()),
+      _buildRoute(invoiceDetailsScreen,  InvoiceDetailsScreen()),
+      _buildRoute(paymentMainScreen,  InspoPaymentMainScreen()),
+      _buildRoute(ibanInfoScreen,  IBANInfoScreen()),
+      _buildRoute(inspoMapAddAddressScreen,  InspoMapAddAddressScreen()),
+      _buildRoute(inspoAddAddressScreen,  InspoAddAddressScreen()),
     ],
   );
 
@@ -93,7 +129,7 @@ class AppRouter {
     );
   }
 
-  // FUNCTION THAT HANDLES NAVIGATION
+// FUNCTION THAT HANDLES NAVIGATION
   static CustomTransitionPage _getPageRoute({
     required BuildContext context,
     required GoRouterState state,
@@ -103,8 +139,19 @@ class AppRouter {
     return CustomTransitionPage(
       key: state.pageKey,
       child: child,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-          FadeTransition(opacity: animation, child: child),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const beginOffset = Offset(1.0, 0.0); // Slide from right to left
+        const endOffset = Offset.zero;
+        var curve = Curves.easeInOut;
+
+        var tween = Tween(begin: beginOffset, end: endOffset).chain(
+          CurveTween(curve: curve),
+        );
+
+        var offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(position: offsetAnimation, child: child);
+      },
     );
   }
 

@@ -24,8 +24,8 @@ class AppTheme {
   static const Color blueBlues = Color(0xFF174378);
 
   static const Color green = Colors.green;
-  static const Color lightGreen = Color(0xFF9FFF99);
-  static const Color red = Colors.red;
+  static const Color lightGreen = Color(0xFFA9FF74);
+  static const Color redButton = Color(0xFFFF3C3C);
   static const Color lightRed = Color(0xFFEE9281);
   static const Color orange = Colors.deepOrange;
   static const Color blue = Color(0xFF6C63FF);
@@ -70,6 +70,10 @@ class AppTheme {
   static const Color splashScreenBgColor = Color(0xFFF37D71);
   static const Color graphColorPurple = Color(0xFFC855CB);
   static const Color graphColorOrange = Color(0xFFFF9900);
+  static const Color transactionRed = Color(0xFFFF3B3B);
+  static const Color transactionLight = Color(0xFFFFF6E9);
+  static const Color transactionLightText = Color(0xFFB5850B);
+
 
   static const Color whiteColor = Colors.white;
   static const Color blackColor = Color(0xFF201F21);
@@ -112,6 +116,8 @@ class AppTheme {
   static const Color labelHintColor = Color(0xFF757575);
   static const Color disableButtonColor = Color(0xFFC5C5C5);
   static const Color lightGreyColor = Color(0xFFF3F3F3);
+  static const Color textLightGray = Color(0xFFA3A3A3);
+  static const Color lightThemeGreenText = Color(0xFF3F635A);
 
   static LinearGradient onBoardingLinearGradient = const LinearGradient(
     colors: [

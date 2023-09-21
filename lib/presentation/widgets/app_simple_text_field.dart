@@ -39,6 +39,7 @@ class AppSimpleTextField extends StatelessWidget {
   double width;
   double height;
   Widget? icon;
+  FontWeight titleFontWeight;
   final bool hasBorders;
 
   AppSimpleTextField(
@@ -74,6 +75,7 @@ class AppSimpleTextField extends StatelessWidget {
       this.height = 0,
       this.icon,
       this.hasBorders = true,
+      this.titleFontWeight = FontWeight.w400,
       this.validationMsg = 'required_field_tr'})
       : super(key: key);
 
@@ -97,7 +99,7 @@ class AppSimpleTextField extends StatelessWidget {
                 title,
                 style: Dimensions.customTextStyle(
                   16,
-                  FontWeight.w700,
+                  titleFontWeight,
                   AppTheme.blackColor,
                 ),
               ),

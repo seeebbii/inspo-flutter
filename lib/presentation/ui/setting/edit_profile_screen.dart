@@ -28,7 +28,9 @@ class _InspoEditProfileScreen extends State<InspoEditProfileScreen> {
     EditProfileScreenVM editProfileScreenVM =
         context.read<EditProfileScreenVM>();
     return Scaffold(
+
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         centerTitle: true,
         title: Text(
           "EDIT PROFILE",

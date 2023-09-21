@@ -2,6 +2,8 @@ import 'package:clean_architecture_template/presentation/widgets/inspo_button.da
 import 'package:clean_architecture_template/presentation/widgets/inspo_notification_item.dart';
 import 'package:flutter/material.dart';
 
+import '../home/inspo_confirmation_dialog.dart';
+
 class InspoNotificationScreen extends StatefulWidget {
   const InspoNotificationScreen({Key? key}) : super(key: key);
 
@@ -12,7 +14,25 @@ class InspoNotificationScreen extends StatefulWidget {
 
 class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
   final List<String> _filteredList = ["APPROVED", "DENIED", "COVERED"];
-  String _selectedFilter = "APPROVED";
+  String _selectedFilter = "";
+
+  final List<String> dataType = [
+    "UPCOMING"
+    "APPROVED",
+    "DENIED",
+    "COVERED",
+    "APPROVED",
+    "DENIED",
+    "COVERED",
+    "APPROVED",
+    "DENIED",
+    "COVERED",
+    "APPROVED",
+    "THANKYOU"
+  ];
+
+   String requestStatus = "none";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,60 +43,129 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
             SizedBox(
               height: 25,
               width: MediaQuery.of(context).size.width,
-              child: Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                          itemCount: _filteredList.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InspoButton(
-                              width: 100,
-                              height: 30,
-                              marginLeft: 3,
-                              text: _filteredList[index],
-                              buttonRadius: 12,
-                              borderWidth: 2,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                              buttonColor:
-                                  _selectedFilter == _filteredList[index]
-                                      ? Colors.black
-                                      : Colors.white,
-                              textColor: _selectedFilter == _filteredList[index]
-                                  ? Colors.white
-                                  : Colors.black,
-                              onPressed: () {
-                                setState(() {
-                                  _selectedFilter = _filteredList[index];
-                                });
-                              },
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: Image.asset("assets/images/ic_filter.png"),
-                    )
-                  ],
-                ),
+              child: Row(
+                children: [
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _filteredList.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return InspoButton(
+                          width: 100,
+                          height: 30,
+                          marginLeft: 3,
+                          text: _filteredList[index],
+                          buttonRadius: 12,
+                          borderWidth: 2,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          buttonColor: _selectedFilter == _filteredList[index]
+                              ? Colors.black
+                              : Colors.white,
+                          textColor: _selectedFilter == _filteredList[index]
+                              ? Colors.white
+                              : Colors.black,
+                          onPressed: () {
+                            setState(() {
+                              if (_selectedFilter == _filteredList[index]) {
+                                _selectedFilter = "";
+                                return;
+                              }
+                              _selectedFilter = _filteredList[index];
+                            });
+                          },
+                        );
+                      }),
+                  const Spacer(),
+                  SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: Image.asset("assets/images/ic_filter.png"),
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 10),
-            Expanded(
-              // Wrap ListView.builder with Expanded
+            requestStatus == "none" ? Expanded(
               child: ListView.builder(
-                itemCount: 15,
+                itemCount: dataType.length,
                 itemBuilder: (context, index) {
-                  return const InspoNotificationItem();
+                  return _selectedFilter == dataType[index] || _selectedFilter == "" ? InspoNotificationItem(
+                    type: dataType[index],
+                    onAcceptRequirementsTap: (){
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return InspoConfirmationDialog(
+                            onYesButtonTap: (){
+                              setState(() {
+                                dataType[index] = "UPCOMING";
+                              });
+                            },
+                          ); // Your custom dialog widget
+                        },
+                      );
+                    },
+                    onRequirementsTap: (){
+                      setState(() {
+                        requestStatus = "req";
+                      });
+                    },
+                    onCoveredTap: (){
+
+                    },
+                  ) : const SizedBox.shrink();
                 },
               ),
-            ),
+            ) : requestStatus == "req" ? 
+            Expanded(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InspoNotificationItem(
+                      type: 'COVERED',
+                      onAcceptRequirementsTap: () {
+
+                      },
+                      onRequirementsTap: () {
+
+                    },
+                      onCoveredTap: (){
+                        setState(() {
+                          requestStatus = "thankyou";
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ) : requestStatus == "thankyou" ?
+            Expanded(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InspoNotificationItem(
+                      type: 'THANKYOU',
+                      onAcceptRequirementsTap: () {
+
+                      },
+                      onRequirementsTap: () {
+
+                    },
+                      onCoveredTap: (){
+
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ) : SizedBox.shrink(),
           ],
         ),
       ),
     );
   }
 }
+
