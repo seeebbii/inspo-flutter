@@ -1,5 +1,6 @@
 import 'package:clean_architecture_template/presentation/widgets/inspo_past_coverage_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../utils/dimensions.dart';
@@ -42,7 +43,7 @@ class InspoPastCoverageScreen extends StatelessWidget {
               margin: const EdgeInsets.only(right: 12.5),
               width: 16,
               height: 16,
-              child: Image.asset("assets/images/ic_filter.png"),
+              child: SvgPicture.asset("assets/icons/ic_filter.svg"),
             ),
           )
         ],

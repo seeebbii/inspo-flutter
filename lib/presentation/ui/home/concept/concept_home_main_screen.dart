@@ -305,31 +305,42 @@ class ConceptHomeMainScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                width: 8,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(width: 1),
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
+                          Expanded(
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                "KNET",
-                                style: Dimensions.customTextStyle(
-                                  8,
-                                  FontWeight.w600,
-                                  Colors.black,
+                                SizedBox(width: 8),
+                                Text(
+                                  "KNET",
+                                  style: Dimensions.customTextStyle(
+                                    8,
+                                    FontWeight.w600,
+                                    Colors.black,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          SvgPicture.asset("assets/icons/kNet.svg"),
-                          SizedBox(),
-                          SizedBox()
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 4),
+                              margin: EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                  color: AppTheme.knetLogoColor,
+                                  borderRadius: BorderRadius.all(Radius.circular(2))
+                              ),
+                              child: SvgPicture.asset("assets/icons/knet_logo.svg"),
+                            ),
+                          ),
+                          Expanded(child: Container())
                         ],
                       ),
                     ),
@@ -343,32 +354,42 @@ class ConceptHomeMainScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                width: 8,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(width: 1),
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
+                          Expanded(
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                "APPLE PAY",
-                                style: Dimensions.customTextStyle(
-                                  8,
-                                  FontWeight.w600,
-                                  Colors.black,
+                                SizedBox(width: 8),
+                                Text(
+                                  "APPLE PAY",
+                                  style: Dimensions.customTextStyle(
+                                    8,
+                                    FontWeight.w600,
+                                    Colors.black,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          SvgPicture.asset("assets/icons/apple_pay.svg"),
-                          SizedBox(),
-                          SizedBox(),
-                          SizedBox()
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 4),
+                              margin: EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.all(Radius.circular(2))
+                              ),
+                              child: SvgPicture.asset("assets/icons/apple_logo.svg"),
+                            ),
+                          ),
+                          Expanded(child: Container())
                         ],
                       ),
                     ),
@@ -380,7 +401,7 @@ class ConceptHomeMainScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 27.0,vertical: 5),
                       child: InspoButton(
-                        text: "Continue",
+                        text: "PAY NOW",
                         width: MediaQuery.of(context).size.width,
                         height: 56,
                         buttonColor: AppTheme.whiteColor,

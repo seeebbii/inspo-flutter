@@ -19,134 +19,137 @@ class InspoConceptHomeRequestItemWidget extends StatelessWidget {
 
     return Consumer<ConceptHomeScreenNotifier>(
         builder: (context, model, builder) {
-      return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(width: 2)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showAccountDialog(context);
-                    },
-                    child: Image.asset("assets/images/avtar.png"),
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ISLAM MANSOORI",
-                        style: Dimensions.customTextStyle(
-                          21,
-                          FontWeight.w600,
-                          Colors.black,
-                        ),
-                      ),
-                      Text(
-                        "10hr",
-                        style: Dimensions.customTextStyle(
-                          12,
-                          FontWeight.w400,
-                          AppTheme.blackColor,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "WANTS TO COVER YOUR CONCEPT",
-                style: Dimensions.customTextStyle(
-                  16,
-                  FontWeight.w400,
-                  AppTheme.blackColor,
-                ),
-              ),
-              const SizedBox(height: 15),
-              model.isRequestAccepted
-                  ? Column(
-                      mainAxisSize: MainAxisSize.max,
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(width: 2)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showAccountDialog(context);
+                      },
+                      child: Image.asset("assets/images/avtar.png"),
+                    ),
+                    const SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        InspoButton(
-                          text: "ACCEPT",
-                          height: 50,
-                          marginTop: 5,
-                          buttonColor: AppTheme.lightGreen,
-                          buttonRadius: 7,
-                          fontSize: 12,
-                          marginBottom: 23,
-                          fontWeight: FontWeight.w700,
-                          borderWidth: 1,
-                          textColor: Colors.black,
-                          onPressed: () {
-                            provider.selectIndex(6);
-                          },
+                        Text(
+                          "ISLAM MANSOORI",
+                          style: Dimensions.customTextStyle(
+                            21,
+                            FontWeight.w600,
+                            Colors.black,
+                          ),
+                        ),
+                        Text(
+                          "10hr",
+                          style: Dimensions.customTextStyle(
+                            12,
+                            FontWeight.w400,
+                            AppTheme.blackColor,
+                          ),
                         ),
                       ],
                     )
-                  : model.isRequestDenied
-                      ? Expanded(
-                          child: InspoButton(
-                            text: "DENY",
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "WANTS TO COVER YOUR CONCEPT",
+                  style: Dimensions.customTextStyle(
+                    16,
+                    FontWeight.w400,
+                    AppTheme.blackColor,
+                  ),
+                ),
+                const SizedBox(height: 15),
+                model.isRequestAccepted
+                    ? Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          InspoButton(
+                            text: "ACCEPT",
                             height: 50,
                             marginTop: 5,
-                            buttonColor: AppTheme.redButton,
+                            buttonColor: AppTheme.lightGreen,
                             buttonRadius: 7,
                             fontSize: 12,
                             marginBottom: 23,
                             fontWeight: FontWeight.w700,
                             borderWidth: 1,
                             textColor: Colors.black,
-                            onPressed: () {},
+                            onPressed: () {
+                              provider.selectIndex(6);
+                            },
                           ),
-                        )
-                      : Row(
-                          children: [
-                            Expanded(
-                              child: InspoButton(
-                                text: "ACCEPT",
-                                width: 146,
-                                height: 50,
-                                marginTop: 5,
-                                buttonColor: AppTheme.lightGreen,
-                                buttonRadius: 3,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                borderWidth: 1,
-                                textColor: Colors.black,
-                                onPressed: () {
-                                  model.setRequestAccepted(true);
-                                },
-                              ),
+                        ],
+                      )
+                    : model.isRequestDenied
+                        ? Expanded(
+                            child: InspoButton(
+                              text: "DENY",
+                              height: 50,
+                              marginTop: 5,
+                              buttonColor: AppTheme.redButton,
+                              buttonRadius: 7,
+                              fontSize: 12,
+                              marginBottom: 23,
+                              fontWeight: FontWeight.w700,
+                              borderWidth: 1,
+                              textColor: Colors.black,
+                              onPressed: () {},
                             ),
-                            const SizedBox(width: 14),
-                            Expanded(
-                              child: InspoButton(
-                                text: "DENY",
-                                width: 146,
-                                height: 50,
-                                marginTop: 5,
-                                buttonColor: AppTheme.redButton,
-                                buttonRadius: 3,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                borderWidth: 1,
-                                textColor: Colors.black,
-                                onPressed: () {
-                                  model.setRequestDenied(true);
-                                },
+                          )
+                        : Row(
+                            children: [
+                              Expanded(
+                                child: InspoButton(
+                                  text: "ACCEPT",
+                                  width: 146,
+                                  height: 50,
+                                  marginTop: 5,
+                                  buttonColor: AppTheme.lightGreen,
+                                  buttonRadius: 3,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  borderWidth: 1,
+                                  textColor: Colors.black,
+                                  onPressed: () {
+                                    model.setRequestAccepted(true);
+                                  },
+                                ),
                               ),
-                            )
-                          ],
-                        )
-            ],
+                              const SizedBox(width: 14),
+                              Expanded(
+                                child: InspoButton(
+                                  text: "DENY",
+                                  width: 146,
+                                  height: 50,
+                                  marginTop: 5,
+                                  buttonColor: AppTheme.redButton,
+                                  buttonRadius: 3,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  borderWidth: 1,
+                                  textColor: Colors.black,
+                                  onPressed: () {
+                                    model.setRequestDenied(true);
+                                  },
+                                ),
+                              )
+                            ],
+                          )
+              ],
+            ),
           ),
         ),
       );

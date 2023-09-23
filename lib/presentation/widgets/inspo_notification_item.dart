@@ -55,7 +55,7 @@ class InspoNotificationItem extends StatelessWidget {
                         GestureDetector(
                           onTap: type == "APPROVED" ? onAcceptRequirementsTap : onRequirementsTap,
                           child: Text(
-                            type == "APPROVED" ? "Accept Requirements" : "Requirements",
+                            type == "APPROVED" ? "Accept Requirements".toUpperCase() : "Requirements".toUpperCase(),
                             style: Dimensions.customTextStyle(
                               11,
                               FontWeight.w600,
