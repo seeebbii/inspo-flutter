@@ -1,6 +1,7 @@
 import 'package:clean_architecture_template/presentation/widgets/inspo_button.dart';
 import 'package:clean_architecture_template/presentation/widgets/inspo_notification_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../home/inspo_confirmation_dialog.dart';
 
@@ -80,7 +81,7 @@ class _InspoNotificationScreenState extends State<InspoNotificationScreen> {
                   SizedBox(
                     width: 16,
                     height: 16,
-                    child: Image.asset("assets/images/ic_filter.png"),
+                    child: SvgPicture.asset("assets/icons/ic_filter.svg"),
                   )
                 ],
               ),

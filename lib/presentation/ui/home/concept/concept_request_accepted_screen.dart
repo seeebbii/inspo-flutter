@@ -70,34 +70,37 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Image.asset("assets/images/avtar.png"),
-                              const SizedBox(width: 10),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              Row(
                                 children: [
-                                  Text(
-                                    "ISLAM MANSOORI",
-                                    style: Dimensions.customTextStyle(
-                                      21,
-                                      FontWeight.w600,
-                                      Colors.black,
-                                    ),
-                                  ),
-                                  Text(
-                                    "10hr",
-                                    style: Dimensions.customTextStyle(
-                                      12,
-                                      FontWeight.w400,
-                                      AppTheme.blackColor,
-                                    ),
+                                  Image.asset("assets/images/avtar.png"),
+                                  const SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "ISLAM MANSOORI",
+                                        style: Dimensions.customTextStyle(
+                                          21,
+                                          FontWeight.w600,
+                                          Colors.black,
+                                        ),
+                                      ),
+                                      Text(
+                                        "10hr",
+                                        style: Dimensions.customTextStyle(
+                                          12,
+                                          FontWeight.w400,
+                                          AppTheme.blackColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                              Align(
-                                  alignment: Alignment.topRight,
-                                  child: SvgPicture.asset(
-                                      "assets/icons/instagram.svg")),
+                              SvgPicture.asset(
+                                  "assets/icons/instagram.svg"),
                             ],
                           ),
                           const SizedBox(height: 10),
@@ -122,7 +125,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                             textColor: Colors.black,
                             onPressed: () {},
                           ),
-                          const SizedBox(height: 5.3),
+                          const SizedBox(height: 24),
                           Text(
                             "SET A DATE",
                             style: Dimensions.customTextStyle(
@@ -261,7 +264,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 11),
+                                  const SizedBox(height: 13),
                                 ],
                               )),
                           Visibility(
@@ -287,8 +290,6 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                           const SliverGridDelegateWithFixedCrossAxisCount(
                                         childAspectRatio: (60 / 25),
                                         crossAxisCount: 3,
-                                        crossAxisSpacing: 0.85,
-                                        mainAxisSpacing: 0.85,
                                       ),
                                       itemBuilder: (context, index) {
                                         final checkbox =
@@ -299,8 +300,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                           },
                                           child: Container(
                                             color: Colors.white,
-                                            padding: const EdgeInsets.all(
-                                                10), // Adjust padding as needed
+                                            padding: const EdgeInsets.all(10), // Adjust padding as needed
                                             child: CustomCheckBox(
                                               checkbox.isChecked,
                                             ),
@@ -309,7 +309,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                       },
                                     ),
                                   ),
-                                  const SizedBox(height: 19.3),
+                                  const SizedBox(height: 13.3),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -350,7 +350,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                       },
                                       keyboard:
                                       TextInputType.emailAddress),
-                                  SizedBox(height: 16),
+                                  SizedBox(height: 13),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -393,7 +393,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 15,),
+                                  SizedBox(height: 13,),
                                   Text(
                                     "SET ITEM TYPE",
                                     style: Dimensions.customTextStyle(
@@ -402,7 +402,7 @@ class ConceptRequestAcceptedSreen extends StatelessWidget {
                                       Colors.black,
                                     ),
                                   ),
-                                  const SizedBox(height: 11.0),
+                                  const SizedBox(height: 13.0),
                                   Row(
                                     children: [
                                       Expanded(

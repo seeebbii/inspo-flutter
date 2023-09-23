@@ -26,100 +26,103 @@ class InspoConceptPaymentDueWidget extends StatelessWidget {
 
     return Consumer<ConceptHomeScreenNotifier>(
         builder: (context, model, builder) {
-      return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(width: 2)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showAccountDialog(context);
-                    },
-                    child: Image.asset("assets/images/avtar.png"),
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ISLAM MANSOORI",
-                        style: Dimensions.customTextStyle(
-                          21,
-                          FontWeight.w600,
-                          Colors.black,
-                        ),
-                      ),
-                      Text(
-                        "10hr",
-                        style: Dimensions.customTextStyle(
-                          12,
-                          FontWeight.w400,
-                          AppTheme.blackColor,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(height: 10),
-              RichText(
-                text: TextSpan(children: <TextSpan>[
-                  TextSpan(
-                    text: 'YOUR ',
-                    style: Dimensions.customTextStyle(
-                      20,
-                      FontWeight.w400,
-                      AppTheme.blackColor,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'FUNDING IS DUE',
-                    style: Dimensions.customTextStyle(
-                      20,
-                      FontWeight.w500,
-                      AppTheme.blackColor,
-                    ),
-                  ),
-                ]),
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  Expanded(
-                    child: InspoButton(
-                      text: "BOOSTER PAYMENT",
-                      width: 146,
-                      height: 50,
-                      marginTop: 5,
-                      buttonColor: AppTheme.lightGreen,
-                      buttonRadius: 3,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      borderWidth: 1,
-                      textColor: Colors.black,
-                      onPressed: () {
-                        if(isOutstandingPayment){
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return outstandingBottomSheet(conceptHomeMainScreenProvider,context);
-                            },
-                          );
-                        }else{
-                          conceptHomeMainScreenProvider.setDialogVisible(true);
-                        }
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(width: 2)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showAccountDialog(context);
                       },
+                      child: Image.asset("assets/images/avtar.png"),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    const SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "ISLAM MANSOORI",
+                          style: Dimensions.customTextStyle(
+                            21,
+                            FontWeight.w600,
+                            Colors.black,
+                          ),
+                        ),
+                        Text(
+                          "10hr",
+                          style: Dimensions.customTextStyle(
+                            12,
+                            FontWeight.w400,
+                            AppTheme.blackColor,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(height: 10),
+                RichText(
+                  text: TextSpan(children: <TextSpan>[
+                    TextSpan(
+                      text: 'YOUR ',
+                      style: Dimensions.customTextStyle(
+                        20,
+                        FontWeight.w400,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'FUNDING IS DUE',
+                      style: Dimensions.customTextStyle(
+                        20,
+                        FontWeight.w500,
+                        AppTheme.blackColor,
+                      ),
+                    ),
+                  ]),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Expanded(
+                      child: InspoButton(
+                        text: "BOOSTER PAYMENT",
+                        width: 146,
+                        height: 50,
+                        marginTop: 5,
+                        buttonColor: AppTheme.lightGreen,
+                        buttonRadius: 3,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        borderWidth: 1,
+                        textColor: Colors.black,
+                        onPressed: () {
+                          if(isOutstandingPayment){
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return outstandingBottomSheet(conceptHomeMainScreenProvider,context);
+                              },
+                            );
+                          }else{
+                            conceptHomeMainScreenProvider.setDialogVisible(true);
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       );

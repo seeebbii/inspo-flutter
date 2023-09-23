@@ -118,6 +118,7 @@ class AppTheme {
   static const Color lightGreyColor = Color(0xFFF3F3F3);
   static const Color textLightGray = Color(0xFFA3A3A3);
   static const Color lightThemeGreenText = Color(0xFF3F635A);
+  static const Color knetLogoColor = Color(0xFF1871B6);
 
   static LinearGradient onBoardingLinearGradient = const LinearGradient(
     colors: [
