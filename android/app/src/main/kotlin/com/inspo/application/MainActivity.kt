@@ -1,4 +1,4 @@
-package com.example.clean_architecture_template
+package com.inspo.application
 
 import io.flutter.embedding.android.FlutterActivity
 
