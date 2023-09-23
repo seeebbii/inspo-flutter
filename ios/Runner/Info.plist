@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -24,6 +26,33 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Inspo requires access to the Camera if your were to use it to upload a profile photo.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Inspo requires access to your Contacts if to share directly from the app.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Inspo requires access to FaceID if you wish to use it for security purposes.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Inspo needs your permission to help you in finding nearby ATMs</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Inspo needs your permission to help you in finding nearby ATMs</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Inspo needs your permission to help you in finding nearby ATMs</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Inspo requires access to the Microphone if you were to use it to upload a profile photo.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Inspo needs your permission</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Inspo requires access to your Photos Library to allow you to upload your profile photo.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Inspo needs your permission</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,9 +72,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>
