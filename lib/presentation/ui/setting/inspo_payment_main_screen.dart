@@ -11,6 +11,7 @@ import '../../../config/app_theme.dart';
 import '../../../config/router/app_router.dart';
 import '../../../utils/dimensions.dart';
 import '../../notifiers/bottomNavBar.notifier.dart';
+import '../../notifiers/ibanScreenPageView.notifier.dart';
 import '../../view_models/authentication_VM.dart';
 import '../../widgets/app_simple_text_field.dart';
 import '../../widgets/inspo_bottom_nav.dart';
@@ -60,7 +61,8 @@ class InspoPaymentMainScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 3),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
+                      context.read<IBANPageViewProvider>().selectIndex(0);
                       context.push(AppRouter.ibanInfoScreen);
                     },
                     child: SvgPicture.asset("assets/icons/iban_info.svg"),
@@ -69,22 +71,22 @@ class InspoPaymentMainScreen extends StatelessWidget {
               ),
               Consumer<AuthenticationScreenVM>(
                   builder: (context, model, builder) {
-                    return AppSimpleTextField(
-                        title: "",
-                        height: 55,
-                        hintText: "AA00 AAAA 0000 0000 0000 0000 0000",
-                        width: MediaQuery.of(context).size.width,
-                        borderWidth: 3,
-                        marginTop: 5,
-                        borderRadius: 8,
-                        controller: model.emailController,
-                        isEmail: true,
-                        fieldNameText: "",
-                        onChange: (value) {
-                          print(value);
-                        },
-                        keyboard: TextInputType.emailAddress);
-                  }),
+                return AppSimpleTextField(
+                    title: "",
+                    height: 55,
+                    hintText: "AA00 AAAA 0000 0000 0000 0000 0000",
+                    width: MediaQuery.of(context).size.width,
+                    borderWidth: 3,
+                    marginTop: 5,
+                    borderRadius: 8,
+                    controller: model.emailController,
+                    isEmail: true,
+                    fieldNameText: "",
+                    onChange: (value) {
+                      print(value);
+                    },
+                    keyboard: TextInputType.emailAddress);
+              }),
               SizedBox(
                 height: context.height * 0.2,
               ),

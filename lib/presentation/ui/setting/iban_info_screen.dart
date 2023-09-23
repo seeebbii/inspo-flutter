@@ -15,245 +15,242 @@ import '../../widgets/concept/inspo_concept_view_all_review_item_widget.dart';
 import '../../widgets/inspo_button.dart';
 
 class IBANInfoScreen extends StatelessWidget {
-   IBANInfoScreen({Key? key}) : super(key: key);
+  IBANInfoScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        margin: const EdgeInsets.only(top: 40),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(
-            color: Colors.black,
-            width: 2,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          margin: const EdgeInsets.only(top: 40),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border.all(
+              color: Colors.black,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(31), topLeft: Radius.circular(31)),
           ),
-          borderRadius: BorderRadius.only(topRight: Radius.circular(31),topLeft: Radius.circular(31)),
-        ),
-        child: Consumer<IBANPageViewProvider>(
-          builder: (context, model, builder){
-            return Column(
-              children: [
-                Expanded(
-                  child: PageView(
+          child: Consumer<IBANPageViewProvider>(
+            builder: (context, model, builder) {
+              return Column(
+                children: [
+                  Expanded(
+                      child: PageView(
                     controller: model.pageController,
                     onPageChanged: (index) {
                       model.selectIndex(index);
                     },
-                    children:  [
+                    children: [
                       ...IBANInfoWidgetFirst(),
                       ...IBANInfoWidgetSecond(),
                       ...IBANInfoWidgetThird(),
                     ],
-                  )
-                ),
-                Container(
-                  height: 10,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 3,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                        child: CircleAvatar(
-                          radius: 6,
-                          backgroundColor: model.selectedIndex == index ? AppTheme.black : AppTheme.darkDividerColor,
-                        ),
-                      );
+                  )),
+                  Container(
+                    height: 10,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 3,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                          child: CircleAvatar(
+                            radius: 6,
+                            backgroundColor: model.selectedIndex == index
+                                ? AppTheme.black
+                                : AppTheme.darkDividerColor,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 12),
+                  InspoButton(
+                    text: "GOT IT!!!",
+                    width: MediaQuery.of(context).size.width,
+                    height: 56,
+                    buttonColor: AppTheme.blackColor,
+                    buttonRadius: 8,
+                    fontSize: 21,
+                    marginRight: 23,
+                    marginLeft: 23,
+                    fontWeight: FontWeight.w600,
+                    textColor: Colors.white,
+                    borderWidth: 1,
+                    onPressed: () {
+                      Navigator.of(context).pop();
                     },
                   ),
-                ),
-                SizedBox(height: 12),
-                InspoButton(
-                  text: "GOT IT!!!",
-                  width: MediaQuery.of(context).size.width,
-                  height: 56,
-                  buttonColor: AppTheme.blackColor,
-                  buttonRadius: 8,
-                  fontSize: 21,
-                  marginRight: 23,
-                  marginLeft: 23,
-                  fontWeight: FontWeight.w600,
-                  textColor: Colors.white,
-                  borderWidth: 1,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                SizedBox(height: 32)
-              ],
-            );
-          },
-        )
-      ),
+                  SizedBox(height: 32)
+                ],
+              );
+            },
+          )),
     );
   }
 }
 
-List<Widget> IBANInfoWidgetFirst(){
+List<Widget> IBANInfoWidgetFirst() {
   return [
-  Padding(
-    padding: EdgeInsets.symmetric(horizontal: 23),
-    child: Column(
+    Padding(
+      padding: EdgeInsets.symmetric(horizontal: 23),
+      child: Column(
         children: [
           Column(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 36),
-                    Center(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 36),
+                  Center(
+                    child: Text(
+                      "TO FIND YOUR IBAN, YOU CAN FOLLOW THESE STEPS:",
+                      style: Dimensions.customTextStyle(
+                        23.9,
+                        FontWeight.w700,
+                        Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 56),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "INTERNET BANKING",
+                    style: Dimensions.customTextStyle(
+                      23,
+                      FontWeight.w700,
+                      Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 3),
+                  Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(width: 1)),
+                    child: Center(
                       child: Text(
-                        "TO FIND YOUR IBAN, YOU CAN FOLLOW THESE STEPS:",
+                        "1",
                         style: Dimensions.customTextStyle(
-                          23.9,
-                          FontWeight.w700,
+                          9,
+                          FontWeight.w500,
                           Colors.black,
                         ),
                       ),
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                "LOG IN TO YOUR ONLINE BANKING ACCOUNT AND LOOK FOR ACCOUNT DETAILS  OR PROFILE SETTINGS, THE IBAN IS OFTEN DISPLAYED THERE",
+                style: Dimensions.customTextStyle(
+                  16,
+                  FontWeight.w500,
+                  Colors.black,
                 ),
-                const SizedBox(height: 56),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "INTERNET BANKING",
-                      style: Dimensions.customTextStyle(
-                        23,
-                        FontWeight.w700,
-                        Colors.black,
-                      ),
+              ),
+              const SizedBox(height: 26),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "CHECK BANK STATEMENTS",
+                    style: Dimensions.customTextStyle(
+                      23,
+                      FontWeight.w700,
+                      Colors.black,
                     ),
-                    SizedBox(width: 3),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
+                  ),
+                  SizedBox(width: 3),
+                  Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(width: 1)
-                      ),
-                      child: Center(
-                        child: Text(
-                          "1",
-                          style: Dimensions.customTextStyle(
-                            9,
-                            FontWeight.w500,
-                            Colors.black,
-                          ),
+                        border: Border.all(width: 1)),
+                    child: Center(
+                      child: Text(
+                        "2",
+                        style: Dimensions.customTextStyle(
+                          9,
+                          FontWeight.w500,
+                          Colors.black,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  "LOG IN TO YOUR ONLINE BANKING ACCOUNT AND LOOK FOR ACCOUNT DETAILS  OR PROFILE SETTINGS, THE IBAN IS OFTEN DISPLAYED THERE",
-                  style: Dimensions.customTextStyle(
-                    16,
-                    FontWeight.w500,
-                    Colors.black,
                   ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                "MOST BANKS INCLUDE THE IBAN ON ACCOUNT STATEMENTS",
+                style: Dimensions.customTextStyle(
+                  16,
+                  FontWeight.w500,
+                  Colors.black,
                 ),
-                const SizedBox(height: 26),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "CHECK BANK STATEMENTS",
-                      style: Dimensions.customTextStyle(
-                        23,
-                        FontWeight.w700,
-                        Colors.black,
-                      ),
+              ),
+              const SizedBox(height: 26),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "CONTACT YOUR BANK",
+                    style: Dimensions.customTextStyle(
+                      23,
+                      FontWeight.w700,
+                      Colors.black,
                     ),
-                    SizedBox(width: 3),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(width: 1)
-                      ),
-                      child: Center(
-                        child: Text(
-                          "2",
-                          style: Dimensions.customTextStyle(
-                            9,
-                            FontWeight.w500,
-                            Colors.black,
-                          ),
+                  ),
+                  SizedBox(width: 3),
+                  Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(width: 1)),
+                    child: Center(
+                      child: Text(
+                        "3",
+                        style: Dimensions.customTextStyle(
+                          9,
+                          FontWeight.w500,
+                          Colors.black,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  "MOST BANKS INCLUDE THE IBAN ON ACCOUNT STATEMENTS",
-                  style: Dimensions.customTextStyle(
-                    16,
-                    FontWeight.w500,
-                    Colors.black,
                   ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                "IF YOU CAN'T FIND YOUR IBAN THROUGH THE ABOVE METHODS, YOU CAN CONTACT YOUR BANK’S CUSTOMER SUPPORT. THEY WILL HELP AS YOU NEED IN PROVIDING YOUR IBAN.",
+                style: Dimensions.customTextStyle(
+                  16,
+                  FontWeight.w500,
+                  Colors.black,
                 ),
-                const SizedBox(height: 26),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "CONTACT YOUR BANK",
-                      style: Dimensions.customTextStyle(
-                        23,
-                        FontWeight.w700,
-                        Colors.black,
-                      ),
-                    ),
-                    SizedBox(width: 3),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(width: 1)
-                      ),
-                      child: Center(
-                        child: Text(
-                          "3",
-                          style: Dimensions.customTextStyle(
-                            9,
-                            FontWeight.w500,
-                            Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  "IF YOU CAN'T FIND YOUR IBAN THROUGH THE ABOVE METHODS, YOU CAN CONTACT YOUR BANK’S CUSTOMER SUPPORT. THEY WILL HELP AS YOU NEED IN PROVIDING YOUR IBAN.",
-                  style: Dimensions.customTextStyle(
-                    16,
-                    FontWeight.w500,
-                    Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 26),
-              ],
+              ),
+              const SizedBox(height: 26),
+            ],
           )
         ],
-    ),
-  )
+      ),
+    )
   ];
 }
 
-List<Widget> IBANInfoWidgetSecond(){
+List<Widget> IBANInfoWidgetSecond() {
   return [
     Padding(
       padding: EdgeInsets.symmetric(horizontal: 23),
@@ -261,31 +258,32 @@ List<Widget> IBANInfoWidgetSecond(){
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 85),
-          Center(
-            child: Text(
-              "IBAN EXAMPLE IN KUWAIT",
-              style: Dimensions.customTextStyle(
-                27,
-                FontWeight.w700,
-                Colors.black,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 85),
+              Center(
+                child: Text(
+                  "IBAN EXAMPLE IN KUWAIT",
+                  style: Dimensions.customTextStyle(
+                    27,
+                    FontWeight.w700,
+                    Colors.black,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-      AutoSizeText(
-        maxLines: 1,
-        "KW81 CBKU 0000  0000 0000 1234 5601",
-        style: Dimensions.customTextStyle(
-          18.68,
-          FontWeight.w700,
-          Colors.black,
-        ),
-      ),
+          // AutoSizeText(
+          //   maxLines: 1,
+          //   "KW81 CBKU 0000  0000 0000 1234 5601",
+          //   style: Dimensions.customTextStyle(
+          //     18.68,
+          //     FontWeight.w700,
+          //     Colors.black,
+          //   ),
+          // ),
+          Image.asset('assets/images/iban.png'),
           Text(
             "An IBAN (INTERNATIONAL BANK ACCOUNT NUMBER) is an internationally agreed code made up of up to 34 letters and numbers that helps banks make sure that international transfers are processed correctly.",
             textAlign: TextAlign.center,
@@ -296,14 +294,13 @@ List<Widget> IBANInfoWidgetSecond(){
             ),
           ),
           SizedBox()
-      ],
-    ),
+        ],
+      ),
     )
   ];
 }
 
-
-List<Widget> IBANInfoWidgetThird(){
+List<Widget> IBANInfoWidgetThird() {
   return [
     Padding(
       padding: EdgeInsets.symmetric(horizontal: 23),
@@ -373,4 +370,3 @@ List<Widget> IBANInfoWidgetThird(){
     )
   ];
 }
-
