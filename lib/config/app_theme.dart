@@ -39,20 +39,6 @@ class AppTheme {
   static const Color lightLineColor = Color.fromARGB(255, 224, 224, 224);
   static const Color transparent = Colors.transparent;
 
-  static Color appColor = const Color(0xFFCCFF01);
-  static Color appBGColor = const Color(0xFF353535);
-  static Color firstTop = const Color(0xFF0056A6);
-  static Color firstBottom = const Color(0xFF0C81B4);
-  static Color secondTop = const Color(0xFF7FC53A);
-  static Color secondBottom = const Color(0xFF6CA116);
-  static Color thirdTop = const Color(0xFFFF7043);
-  static Color thirdBottom = const Color(0xFFFA3E03);
-  static Color fourthTop = const Color(0xFFF254CF);
-  static Color fourthBottom = const Color(0xFFC811A0);
-  static Color orderPriceBorder = const Color(0xFF8EB103);
-  static Color orderPriceBG = const Color(0xFF98F500);
-  static Color dialogBG = const Color(0xFFECFFA1);
-
   static const Color darkBackgroundColor = Color(0xFF181C1E);
   static const Color lightGray = Color(0xFFE1E1E1);
   static const Color lightBackgroundColor = Color(0xFFFFFFFF);
@@ -73,7 +59,6 @@ class AppTheme {
   static const Color transactionRed = Color(0xFFFF3B3B);
   static const Color transactionLight = Color(0xFFFFF6E9);
   static const Color transactionLightText = Color(0xFFB5850B);
-
 
   static const Color whiteColor = Colors.white;
   static const Color blackColor = Color(0xFF201F21);

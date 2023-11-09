@@ -51,7 +51,8 @@ class AppRouter {
       '/application-under-review-screen';
   static const String conceptEditProfileScreen = '/concept-edit-profile-screen';
   static const String conceptSignupScreen = '/concept-signup-screen';
-  static const String forgotPasswordNewPasswordScreen = '/forgot-password-new-password-screen';
+  static const String forgotPasswordNewPasswordScreen =
+      '/forgot-password-new-password-screen';
 
   // PROFILE SETUP ROUTE
   static const String createProfileScreen = '/create-profile-screen';
@@ -72,10 +73,11 @@ class AppRouter {
   static const String needHelpScreen = '/need-help-screen';
   static const String pastCoverageScreen = '/past-coverage-screen';
   static const String conceptHomeMainScreen = '/concept-home-main-screen';
-  static const String conceptViewAllReviewScreen = '/concept-view-all-review-screen';
-  static const String conceptRequestAcceptedScreen = '/concept-request-accepted-screen';
+  static const String conceptViewAllReviewScreen =
+      '/concept-view-all-review-screen';
+  static const String conceptRequestAcceptedScreen =
+      '/concept-request-accepted-screen';
   static const String conceptInvoiceListScreen = '/concept-invoice-list-screen';
-  static const String invoiceDetailsScreen = '/concept-invoice-details-screen';
   static const String paymentMainScreen = '/concept-payment-main-screen';
   static const String ibanInfoScreen = '/iban-info-screen';
   static const String inspoMapAddAddressScreen = '/map-add-address-screen';
@@ -102,18 +104,20 @@ class AppRouter {
       _buildRoute(editProfileScreen, const InspoEditProfileScreen()),
       _buildRoute(needHelpScreen, InspoNeedHelpScreen()),
       _buildRoute(pastCoverageScreen, const InspoPastCoverageScreen()),
-      _buildRoute(conceptEditProfileScreen, const InspoConceptEditProfileScreen()),
+      _buildRoute(
+          conceptEditProfileScreen, const InspoConceptEditProfileScreen()),
       _buildRoute(conceptSignupScreen, const InspoConceptSignUpScreen()),
       _buildRoute(conceptHomeMainScreen, const ConceptHomeMainScreen()),
-      _buildRoute(conceptViewAllReviewScreen, const ConceptViewAllReviewsScreen()),
-      _buildRoute(conceptRequestAcceptedScreen,  ConceptRequestAcceptedSreen()),
-      _buildRoute(forgotPasswordNewPasswordScreen,  ForgotPasswordNewPasswordScreen()),
-      _buildRoute(conceptInvoiceListScreen,  InspoInvoiceListScreen()),
-      _buildRoute(invoiceDetailsScreen,  InvoiceDetailsScreen()),
-      _buildRoute(paymentMainScreen,  InspoPaymentMainScreen()),
-      _buildRoute(ibanInfoScreen,  IBANInfoScreen()),
-      _buildRoute(inspoMapAddAddressScreen,  InspoMapAddAddressScreen()),
-      _buildRoute(inspoAddAddressScreen,  InspoAddAddressScreen()),
+      _buildRoute(
+          conceptViewAllReviewScreen, const ConceptViewAllReviewsScreen()),
+      _buildRoute(conceptRequestAcceptedScreen, ConceptRequestAcceptedSreen()),
+      _buildRoute(
+          forgotPasswordNewPasswordScreen, ForgotPasswordNewPasswordScreen()),
+      _buildRoute(conceptInvoiceListScreen, InspoInvoiceListScreen()),
+      _buildRoute(paymentMainScreen, InspoPaymentMainScreen()),
+      _buildRoute(ibanInfoScreen, IBANInfoScreen()),
+      _buildRoute(inspoMapAddAddressScreen, InspoMapAddAddressScreen()),
+      _buildRoute(inspoAddAddressScreen, InspoAddAddressScreen()),
     ],
   );
 

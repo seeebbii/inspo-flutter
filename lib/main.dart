@@ -1,6 +1,7 @@
 import 'package:clean_architecture_template/app/providers/multi_providers.dart';
 import 'package:clean_architecture_template/config/router/app_router.dart';
 import 'package:clean_architecture_template/utils/logger.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'config/app_theme.dart';
@@ -17,7 +18,11 @@ void main() async {
   await SharedPref.init();
   await ConnectionNotifier().initConnectivity();
   await HiveDatabase.init();
-  runApp(const MaterialAppClass());
+  runApp(DevicePreview(
+      enabled: false,
+      builder: (context) {
+        return const MaterialAppClass();
+      }));
 }
 
 class MaterialAppClass extends StatelessWidget {
@@ -27,6 +32,8 @@ class MaterialAppClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProviders(
       child: GetMaterialApp.router(
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         title: "Inspo",

@@ -1,4 +1,5 @@
 import 'package:clean_architecture_template/config/router/app_router.dart';
+import 'package:clean_architecture_template/presentation/ui/setting/invoice_details_screen.dart';
 import 'package:clean_architecture_template/utils/extensions/context.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -42,18 +43,18 @@ class InspoInvoiceListScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 17),
+        padding: const EdgeInsets.symmetric(horizontal: 17),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 21),
+            const SizedBox(height: 21),
             Expanded(
               child: ListView.builder(
                   itemCount: 15,
                   itemBuilder: (context, index) {
                     return ConceptInvoiceItemWidget(
-                      onTap: (){
-                        context.push(AppRouter.invoiceDetailsScreen);
+                      onTap: () {
+                        showInvoiceDetails(context);
                       },
                     );
                   }),
@@ -62,5 +63,26 @@ class InspoInvoiceListScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // show bottom sheet
+  void showInvoiceDetails(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(19),
+            topRight: Radius.circular(19),
+          ),
+        ),
+        builder: (context) {
+          return SizedBox(
+            height: context.height * 0.8,
+            width: context.width * 0.9,
+            child: InvoiceDetailsScreen(),
+          );
+        });
   }
 }

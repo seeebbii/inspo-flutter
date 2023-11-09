@@ -8,7 +8,10 @@ import '../inspo_review_circle.dart';
 
 class InspoConceptHomeReviewItemWidget extends StatelessWidget {
   InspoConceptHomeReviewItemWidget(
-      {Key? key, required this.onSliderChange, required this.sliderValue,required this.reviewStatus})
+      {Key? key,
+      required this.onSliderChange,
+      required this.sliderValue,
+      required this.reviewStatus})
       : super(key: key);
 
   Function(double) onSliderChange = (double value) {};
@@ -61,33 +64,34 @@ class InspoConceptHomeReviewItemWidget extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 10),
-              reviewStatus == "cc" ?  RichText(
-                text: TextSpan(
-                    text: 'COVERED YOUR CONCEPT PLEASE ',
-                    style: Dimensions.customTextStyle(
-                      16,
-                      FontWeight.w400,
-                      AppTheme.blackColor,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'RATE THEM',
-                        style: Dimensions.customTextStyle(
-                          16,
-                          FontWeight.w600,
-                          AppTheme.blackColor,
-                        ),
+              reviewStatus == "cc"
+                  ? RichText(
+                      text: TextSpan(
+                          text: 'COVERED YOUR CONCEPT PLEASE ',
+                          style: Dimensions.customTextStyle(
+                            16,
+                            FontWeight.w400,
+                            AppTheme.blackColor,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'RATE THEM',
+                              style: Dimensions.customTextStyle(
+                                16,
+                                FontWeight.w600,
+                                AppTheme.blackColor,
+                              ),
+                            ),
+                          ]),
+                    )
+                  : Text(
+                      "COVERED YOUR ITEM PLEASE RATE THEM",
+                      style: Dimensions.customTextStyle(
+                        16,
+                        FontWeight.w400,
+                        AppTheme.blackColor,
                       ),
-                    ]),
-              ) :
-              Text(
-                "COVERED YOUR ITEM PLEASE RATE THEM",
-                style: Dimensions.customTextStyle(
-                  16,
-                  FontWeight.w400,
-                  AppTheme.blackColor,
-                ),
-              ),
+                    ),
               SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -100,7 +104,9 @@ class InspoConceptHomeReviewItemWidget extends StatelessWidget {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return InspoReviewCircle(
-                            width: 17, height: 17, borderWidth: index <= sliderValue ? 5 : 1);
+                            width: 17,
+                            height: 17,
+                            borderWidth: index <= sliderValue ? 5 : 1);
                       },
                     ),
                   ),
@@ -134,71 +140,81 @@ class InspoConceptHomeReviewItemWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 34,),
-              reviewStatus == "cc" ?  Column(
-                children: [
-                  RichText(
-                    text: TextSpan(
-                        text: 'DID  ',
-                        style: Dimensions.customTextStyle(
-                          16,
-                          FontWeight.w400,
-                          AppTheme.blackColor,
+              SizedBox(
+                height: 34,
+              ),
+              reviewStatus == "cc"
+                  ? Column(
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                              text: 'DID  ',
+                              style: Dimensions.customTextStyle(
+                                16,
+                                FontWeight.w400,
+                                AppTheme.blackColor,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'ISLAM MANSOORI',
+                                  style: Dimensions.customTextStyle(
+                                    16,
+                                    FontWeight.w600,
+                                    AppTheme.blackColor,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' COMPLETE COVERAGE',
+                                  style: Dimensions.customTextStyle(
+                                    16,
+                                    FontWeight.w600,
+                                    AppTheme.blackColor,
+                                  ),
+                                ),
+                              ]),
                         ),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'ISLAM MANSOORI',
-                            style: Dimensions.customTextStyle(
-                              16,
-                              FontWeight.w600,
-                              AppTheme.blackColor,
+                        SizedBox(
+                          height: 17,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: InspoButton(
+                                text: "COVERED",
+                                height: 63,
+                                buttonColor: Colors.black,
+                                buttonRadius: 9,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                textColor: Colors.white,
+                                borderWidth: 2,
+                                onPressed: () {},
+                                hapticFeedback: true,
+                                longPressAnimation: true,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: ' COMPLETE COVERAGE',
-                            style: Dimensions.customTextStyle(
-                              16,
-                              FontWeight.w600,
-                              AppTheme.blackColor,
+                            const SizedBox(width: 5),
+                            Expanded(
+                              child: InspoButton(
+                                text: "NOPE",
+                                height: 63,
+                                marginRight: 12,
+                                buttonColor: Colors.white,
+                                buttonRadius: 9,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                textColor: Colors.black,
+                                borderWidth: 2,
+                                onPressed: () {},
+                                hapticFeedback: true,
+                                longPressAnimation: true,
+                              ),
                             ),
-                          ),
-                        ]),
-                  ),
-                  SizedBox(height: 17,),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: InspoButton(
-                          text: "COVERED",
-                          height: 63,
-                          buttonColor: Colors.black,
-                          buttonRadius: 9,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          textColor: Colors.white,
-                          borderWidth: 2,
-                          onPressed: () {},
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                      Expanded(
-                        child: InspoButton(
-                          text: "NOPE",
-                          height: 63,
-                          marginRight: 12,
-                          buttonColor: Colors.white,
-                          buttonRadius: 9,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          textColor: Colors.black,
-                          borderWidth: 2,
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ) : SizedBox.shrink()
+                          ],
+                        )
+                      ],
+                    )
+                  : SizedBox.shrink()
             ],
           ),
         ),

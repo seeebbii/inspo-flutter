@@ -90,6 +90,8 @@ class InspoConceptHomeRequestItemWidget extends StatelessWidget {
                             onPressed: () {
                               provider.selectIndex(6);
                             },
+                            hapticFeedback: true,
+                            longPressAnimation: true,
                           ),
                         ],
                       )
@@ -107,6 +109,8 @@ class InspoConceptHomeRequestItemWidget extends StatelessWidget {
                               borderWidth: 1,
                               textColor: Colors.black,
                               onPressed: () {},
+                              hapticFeedback: true,
+                              longPressAnimation: true,
                             ),
                           )
                         : Row(
@@ -126,6 +130,8 @@ class InspoConceptHomeRequestItemWidget extends StatelessWidget {
                                   onPressed: () {
                                     model.setRequestAccepted(true);
                                   },
+                                  hapticFeedback: true,
+                                  longPressAnimation: true,
                                 ),
                               ),
                               const SizedBox(width: 14),
@@ -144,6 +150,8 @@ class InspoConceptHomeRequestItemWidget extends StatelessWidget {
                                   onPressed: () {
                                     model.setRequestDenied(true);
                                   },
+                                  hapticFeedback: true,
+                                  longPressAnimation: true,
                                 ),
                               )
                             ],

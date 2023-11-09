@@ -6,7 +6,7 @@ import '../../../utils/dimensions.dart';
 import '../../widgets/inspo_button.dart';
 
 class InspoConfirmationDialog extends StatefulWidget {
-  InspoConfirmationDialog({super.key,required this.onYesButtonTap});
+  InspoConfirmationDialog({super.key, required this.onYesButtonTap});
   VoidCallback onYesButtonTap;
 
   @override
@@ -166,7 +166,7 @@ class _InspoConfirmationDialogState extends State<InspoConfirmationDialog> {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.only(top: 5),
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
@@ -268,7 +268,7 @@ class _InspoConfirmationDialogState extends State<InspoConfirmationDialog> {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.only(top: 5),
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11),
@@ -339,8 +339,8 @@ class _InspoConfirmationDialogState extends State<InspoConfirmationDialog> {
                     child: Column(
                       children: [
                         const Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
                           child: Text(
                             'Are you sure? You have another coverage @ 6:00',
                             style: TextStyle(
@@ -364,6 +364,8 @@ class _InspoConfirmationDialogState extends State<InspoConfirmationDialog> {
                             GoRouter.of(context).pop();
                             widget.onYesButtonTap();
                           },
+                          hapticFeedback: true,
+                          longPressAnimation: true,
                         ),
                       ],
                     ),

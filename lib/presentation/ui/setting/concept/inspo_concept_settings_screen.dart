@@ -77,7 +77,7 @@ class _InspoConceptSettingsScreenState
           name: "INVOICES",
           switchVisible: false,
           onTap: () {
-            context.push(AppRouter.invoiceDetailsScreen);
+            // context.push(AppRouter.invoiceDetailsScreen);
           },
         ),
         InspoSettingsItem(name: "NOTIFICATIONS", switchVisible: true),

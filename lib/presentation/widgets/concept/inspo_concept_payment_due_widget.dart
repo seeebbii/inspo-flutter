@@ -106,17 +106,21 @@ class InspoConceptPaymentDueWidget extends StatelessWidget {
                         borderWidth: 1,
                         textColor: Colors.black,
                         onPressed: () {
-                          if(isOutstandingPayment){
+                          if (isOutstandingPayment) {
                             showModalBottomSheet(
                               context: context,
                               builder: (BuildContext context) {
-                                return outstandingBottomSheet(conceptHomeMainScreenProvider,context);
+                                return outstandingBottomSheet(
+                                    conceptHomeMainScreenProvider, context);
                               },
                             );
-                          }else{
-                            conceptHomeMainScreenProvider.setDialogVisible(true);
+                          } else {
+                            conceptHomeMainScreenProvider
+                                .setDialogVisible(true);
                           }
                         },
+                        hapticFeedback: true,
+                        longPressAnimation: true,
                       ),
                     ),
                   ],
@@ -266,7 +270,9 @@ class InspoConceptPaymentDueWidget extends StatelessWidget {
     );
   }
 
-  Widget outstandingBottomSheet(ConceptHomeMainScreenProvider conceptHomeMainScreenProvider,BuildContext context){
+  Widget outstandingBottomSheet(
+      ConceptHomeMainScreenProvider conceptHomeMainScreenProvider,
+      BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
@@ -274,18 +280,15 @@ class InspoConceptPaymentDueWidget extends StatelessWidget {
             topLeft: Radius.circular(20.0),
             topRight: Radius.circular(20.0),
           ),
-          border: Border.all(width: 2)
-      ),
+          border: Border.all(width: 2)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 5),
-          Center(
-              child: SvgPicture.asset("assets/icons/arrow_down.svg")
-          ),
+          Center(child: SvgPicture.asset("assets/icons/arrow_down.svg")),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15,vertical: 17),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 17),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -300,7 +303,8 @@ class InspoConceptPaymentDueWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 11),
                 Text(
-                  "to continue using inspo clear your DUE payments & enjoy growing your business <3".toUpperCase(),
+                  "to continue using inspo clear your DUE payments & enjoy growing your business <3"
+                      .toUpperCase(),
                   style: Dimensions.customTextStyle(
                     13,
                     FontWeight.w400,
